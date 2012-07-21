@@ -23,16 +23,19 @@
 #define NETWORKDIAGRAM_H
 
 #include <QList>
+#include "node.h"
 #include "nodelink.h"
 
 class NetworkDiagram
 {
 public:
   NetworkDiagram();
-  QList<NodeLink> getNodeLinkList();
+  QList<Node*> & getNodeList();
+  QList<NodeLink*> & getNodeLinkList();
 
 protected:
-  QList<NodeLink> nodeLinkList;
+  QList<Node*> nodeList;
+  QList<NodeLink*> nodeLinkList;
 };
 
 #endif // NETWORKDIAGRAM_H

@@ -21,18 +21,23 @@
 
 #include "nodelink.h"
 
-NodeLink::NodeLink(QPoint p1, QPoint p2)
+NodeLink::NodeLink(Node * n1, Node * n2) :
+  pn1(n1), pn2(n2)
 {
-  qp1 = p1;
-  qp2 = p2;
 }
 
-QPoint NodeLink::p1()
+Node * NodeLink::n1()
 {
-  return qp1;
+  return pn1;
 }
 
-QPoint NodeLink::p2()
+Node * NodeLink::n2()
 {
-  return qp2;
+  return pn1;
+}
+
+void NodeLink::paint(QPainter & painter)
+{
+  painter.setPen(Qt::darkGreen);
+  painter.drawLine(pn1->p(), pn2->p());
 }

@@ -22,23 +22,32 @@
 #include <QtGui>
 #include <QPalette>
 #include "displaywidget.h"
+#include "networkdiagram/node.h"
+#include "networkdiagram/nodelink.h"
 
 using namespace std;
 
-DisplayWidget::DisplayWidget(QWidget*parent):QWidget(parent){
+DisplayWidget::DisplayWidget(QWidget*parent) :
+  QWidget(parent),
+  networkDiagram(NetworkDiagram())
+{
   QPalette Pal(palette());
   Pal.setColor(QPalette::Background, Qt::white);
   setAutoFillBackground(true);
   setPalette(Pal);
   setMouseTracking(true);
-  pointList = QList<QPoint>();
 }
 
 void DisplayWidget::mousePressEvent(QMouseEvent * e)
 {
   if(e->button() == Qt::LeftButton)
     {
-      pointList.append(QPoint(e->x(), e->y()));
+      Node * n = new Node(QPoint(e->x(), e->y()));
+      if (!networkDiagram.getNodeList().isEmpty())
+        {
+          networkDiagram.getNodeLinkList().append(new NodeLink(networkDiagram.getNodeList().last(), n));
+        }
+      networkDiagram.getNodeList().append(n);
     }
 
   update();
@@ -46,23 +55,19 @@ void DisplayWidget::mousePressEvent(QMouseEvent * e)
 
 void DisplayWidget::mouseMoveEvent(QMouseEvent* e)
 {
-  if (!pointList.isEmpty())
+  if (!networkDiagram.getNodeList().isEmpty())
     {
-      pointList.last().setX(e->x());
-      pointList.last().setY(e->y());
       update();
     }
 }
 
 void DisplayWidget::enterEvent(QEvent* e)
 {
-  pointList.append(QPoint(0, 0));
   update();
 }
 
 void DisplayWidget::leaveEvent(QEvent* e)
 {
-  pointList.removeLast();
   update();
 }
 
@@ -73,17 +78,14 @@ void DisplayWidget::paintEvent(QPaintEvent *)
   QPainter painter(this);
   painter.setRenderHint(QPainter::Antialiasing, true);
 
-  painter.setPen(Qt::black);
-  QPoint last = pointList.first();
-  for (int i=1; i<pointList.size(); i++)
+  for (int i=0; i<networkDiagram.getNodeLinkList().size(); i++)
     {
-      QPoint current = pointList.at(i);
-      if (underMouse() && i==pointList.size()-1)
-        {
-          painter.setPen(Qt::lightGray);
-        }
-      painter.drawLine(last, current);
-      last = current;
+      networkDiagram.getNodeLinkList()[i]->paint(painter);
+    }
+
+  for (int i=0; i<networkDiagram.getNodeList().size(); i++)
+    {
+      networkDiagram.getNodeList()[i]->paint(painter);
     }
 }
 

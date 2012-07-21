@@ -22,18 +22,20 @@
 #ifndef NODELINK_H
 #define NODELINK_H
 
-#include <QPoint>
+#include "node.h"
 
 class NodeLink
 {
 public:
-  NodeLink(QPoint p1, QPoint p2);
-  QPoint p1();
-  QPoint p2();
+  NodeLink(Node * n1, Node * n2);
+  Node * n1();
+  Node * n2();
+
+  void paint(QPainter & painter);
 
 private:
-  QPoint qp1;
-  QPoint qp2;
+  Node * pn1;
+  Node * pn2;
 };
 
 #endif // NODELINK_H

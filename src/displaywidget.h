@@ -45,7 +45,6 @@ protected:
 
 private:
   NetworkDiagram networkDiagram;
-  QList<QPoint> pointList;
 };
 
 #endif

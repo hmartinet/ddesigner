@@ -14,11 +14,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     displaywidget.cpp \
     networkdiagram/networkdiagram.cpp \
-    networkdiagram/nodelink.cpp
+    networkdiagram/nodelink.cpp \
+    networkdiagram/node.cpp
 
 HEADERS  += mainwindow.h \
     displaywidget.h \
     networkdiagram/networkdiagram.h \
-    networkdiagram/nodelink.h
+    networkdiagram/nodelink.h \
+    networkdiagram/node.h
 
 FORMS    += mainwindow.ui
+
+CONFIG   += debug

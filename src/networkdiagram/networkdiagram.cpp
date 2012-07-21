@@ -21,11 +21,18 @@
 
 #include "networkdiagram.h"
 
-NetworkDiagram::NetworkDiagram()
+NetworkDiagram::NetworkDiagram() :
+  nodeList(QList<Node*>()),
+  nodeLinkList(QList<NodeLink*>())
 {
 }
 
-QList<NodeLink> NetworkDiagram::getNodeLinkList()
+QList<Node*> & NetworkDiagram::getNodeList()
+{
+  return nodeList;
+}
+
+QList<NodeLink*> & NetworkDiagram::getNodeLinkList()
 {
   return nodeLinkList;
 }
