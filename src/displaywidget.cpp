@@ -42,7 +42,7 @@ void DisplayWidget::mousePressEvent(QMouseEvent * e)
 {
   if(e->button() == Qt::LeftButton)
     {
-      Node * n = new Node(QPoint(e->x(), e->y()));
+      Node * n = new Node(QPoint(e->x(), e->y()), this);
       if (!networkDiagram.getNodeList().isEmpty())
         {
           networkDiagram.getNodeLinkList().append(new NodeLink(networkDiagram.getNodeList().last(), n));

@@ -6,7 +6,7 @@
 
 CONFIG   += debug
 
-QT       += core gui opengl
+QT       += core gui svg pengl
 
 TARGET = netdesigner
 TEMPLATE = app

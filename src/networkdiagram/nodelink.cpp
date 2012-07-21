@@ -19,6 +19,7 @@
 **
 ****************************************************************************/
 
+#include <QPen>
 #include "nodelink.h"
 
 NodeLink::NodeLink(Node * n1, Node * n2) :
@@ -38,6 +39,6 @@ Node * NodeLink::n2()
 
 void NodeLink::paint(QPainter & painter)
 {
-  painter.setPen(Qt::darkGreen);
+  painter.setPen(QPen(Qt::black, 4, Qt::SolidLine));
   painter.drawLine(pn1->p(), pn2->p());
 }

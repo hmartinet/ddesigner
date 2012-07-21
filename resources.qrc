@@ -1,5 +1,6 @@
 <RCC>
-    <qresource prefix="/shapes">
+    <qresource prefix="/">
         <file>resources/shapes/totem-tv.svg</file>
+        <file>resources/shapes/computer-hp-pavilion-t3700.svg</file>
     </qresource>
 </RCC>
