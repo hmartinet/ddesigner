@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'displaywidget.h'
 **
-** Created: Sat Jul 21 13:00:03 2012
+** Created: Sat Jul 21 17:18:21 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "displaywidget.h"
+#include "src/displaywidget.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'displaywidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63

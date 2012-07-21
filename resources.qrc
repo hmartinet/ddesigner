@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/shapes">
+        <file>resources/shapes/totem-tv.svg</file>
+    </qresource>
+</RCC>
