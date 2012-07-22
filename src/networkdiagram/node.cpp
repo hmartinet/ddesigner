@@ -1,16 +1,22 @@
 #include "node.h"
 
-#include <QSvgRenderer>
-
 Node::Node(QPoint p, QWidget * parent) :
   pp(p),
-  parent(parent)
+  parent(parent),
+  selected(false)
 {
-  QSvgRenderer * doc = new QSvgRenderer(QString(":/resources/shapes/computer-hp-pavilion-t3700.svg"));
+  image = new QSvgRenderer(QString(":/resources/shapes/computer-hp-pavilion-t3700.svg"));
   buffer = QImage(parent->size(), QImage::Format_ARGB32_Premultiplied);
   QPainter painter(&buffer);
   painter.setViewport(0, 0, 64, 64);
-  doc->render(&painter);
+  topleft = QPoint(pp.x()-32, pp.y()-32);
+  image->render(&painter);
+  setSelected(false);
+}
+
+void Node::setSelected(bool selected)
+{
+  this->selected = selected;
 }
 
 QPoint Node::p()
@@ -23,5 +29,11 @@ void Node::paint(QPainter & painter)
   painter.setBrush(Qt::darkRed);
   painter.setPen(Qt::NoPen);
 
-  painter.drawImage(pp.x()-32, pp.y()-32, buffer);
+  painter.drawImage(topleft, buffer);
+  if (selected)
+    {
+      painter.setPen(QPen(Qt::gray, 1, Qt::DotLine));
+      painter.setBrush(Qt::NoBrush);
+      painter.drawRect(QRect(topleft - QPoint(5, 5), QSize(74, 74)));
+    }
 }

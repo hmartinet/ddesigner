@@ -36,6 +36,10 @@ class DisplayWidget : public QWidget
 public:
   explicit DisplayWidget(QWidget *parent = 0);
 
+public slots:
+  void setNodeMode();
+  void setNodeLinkMode();
+
 protected:
   void mousePressEvent(QMouseEvent * e);
   void mouseMoveEvent(QMouseEvent* e);
@@ -45,6 +49,7 @@ protected:
 
 private:
   NetworkDiagram networkDiagram;
+  int designMode;
 };
 
 #endif

@@ -38,16 +38,28 @@ DisplayWidget::DisplayWidget(QWidget*parent) :
   setMouseTracking(true);
 }
 
+void DisplayWidget::setNodeMode()
+{
+  designMode = 0;
+}
+
+void DisplayWidget::setNodeLinkMode()
+{
+  designMode = 1;
+}
+
 void DisplayWidget::mousePressEvent(QMouseEvent * e)
 {
   if(e->button() == Qt::LeftButton)
     {
-      Node * n = new Node(QPoint(e->x(), e->y()), this);
-      if (!networkDiagram.getNodeList().isEmpty())
+      switch (designMode)
         {
-          networkDiagram.getNodeLinkList().append(new NodeLink(networkDiagram.getNodeList().last(), n));
+        case 0:
+          networkDiagram.getNodeList().append(new Node(QPoint(e->x(), e->y()), this));
+          break;
+        case 1:
+          break;
         }
-      networkDiagram.getNodeList().append(n);
     }
 
   update();
@@ -55,10 +67,34 @@ void DisplayWidget::mousePressEvent(QMouseEvent * e)
 
 void DisplayWidget::mouseMoveEvent(QMouseEvent* e)
 {
-  if (!networkDiagram.getNodeList().isEmpty())
+  switch (designMode)
     {
-      update();
+    case 0:
+      break;
+    case 1:
+      Node * selected = (Node *) 0;
+      for (int i=0; i<networkDiagram.getNodeList().size(); i++)
+        {
+          if (networkDiagram.getNodeList()[i]->p().x() > e->x() - 32 &&
+              networkDiagram.getNodeList()[i]->p().y() > e->y() - 32 &&
+              networkDiagram.getNodeList()[i]->p().x() < e->x() + 32 &&
+              networkDiagram.getNodeList()[i]->p().y() < e->y() + 32)
+            {
+              if (selected != (Node *) 0)
+                {
+                  selected->setSelected(false);
+                }
+              selected = networkDiagram.getNodeList()[i];
+              selected->setSelected(true);
+            }
+          else
+            {
+              networkDiagram.getNodeList()[i]->setSelected(false);
+            }
+        }
+      break;
     }
+  update();
 }
 
 void DisplayWidget::enterEvent(QEvent* e)
