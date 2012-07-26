@@ -40,12 +40,12 @@ DisplayWidget::DisplayWidget(QWidget*parent) :
 
 void DisplayWidget::setNodeMode()
 {
-  designMode = 0;
+  designMode = FREE_POINT;
 }
 
 void DisplayWidget::setNodeLinkMode()
 {
-  designMode = 1;
+  designMode = SELECT_NODE;
 }
 
 void DisplayWidget::mousePressEvent(QMouseEvent * e)

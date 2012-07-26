@@ -101,7 +101,11 @@
           </widget>
          </item>
          <item>
-          <widget class="NodeListWidget" name="listWidget"/>
+          <widget class="NodeListWidget" name="listWidget">
+           <property name="viewMode">
+            <enum>QListView::ListMode</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

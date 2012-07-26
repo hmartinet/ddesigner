@@ -34,22 +34,28 @@ class DisplayWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit DisplayWidget(QWidget *parent = 0);
+  enum DesignMode {
+    FREE_POINT,         // Get a new point
+    SELECT_NODE,        // Get an existing node
+    SELECT_NODE_LINK    // Get an existing node link
+  };
+
+  explicit DisplayWidget(QWidget* parent = 0);
 
 public slots:
   void setNodeMode();
   void setNodeLinkMode();
 
 protected:
-  void mousePressEvent(QMouseEvent * e);
+  void mousePressEvent(QMouseEvent* e);
   void mouseMoveEvent(QMouseEvent* e);
   void enterEvent(QEvent* e);
   void leaveEvent(QEvent* e);
-  void paintEvent(QPaintEvent *);
+  void paintEvent(QPaintEvent*);
 
 private:
   NetworkDiagram networkDiagram;
-  int designMode;
+  DesignMode designMode;
 };
 
 #endif
