@@ -19,43 +19,31 @@
 **
 ****************************************************************************/
 
-#ifndef DISPLAYWIDGET_H
-#define DISPLAYWIDGET_H
+#include <QMouseEvent>
+#include "diagramview.h"
+#include "svgnodeitem.h"
 
-#include <QColor>
-#include <QWidget>
-#include <QList>
-#include <QPoint>
-#include "networkdiagram/networkdiagram.h"
-#include "networkdiagram/nodelink.h"
-
-class DisplayWidget : public QWidget
+DiagramView::DiagramView(QWidget *parent) :
+  QGraphicsView(parent)
 {
-  Q_OBJECT
+  this->scene.setSceneRect(0,0,1,1);
+  this->setScene(&this->scene);
+}
 
-public:
-  enum DesignMode {
-    FREE_POINT,         // Get a new point
-    SELECT_NODE,        // Get an existing node
-    SELECT_NODE_LINK    // Get an existing node link
-  };
+void DiagramView::mousePressEvent(QMouseEvent *e)
+{
+  if(e->button() == Qt::LeftButton)
+    {
+//      this->scene.addItem(new SvgNodeItem(this->mapToScene(e->pos())));
+    }
+}
 
-  explicit DisplayWidget(QWidget* parent = 0);
+QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
+{
+  if (!svgRendererPool.contains(filePath))
+    {
+      svgRendererPool.insert(filePath, new QSvgRenderer(filePath));
+    }
+  return svgRendererPool.value(filePath);
+}
 
-public slots:
-  void setNodeMode();
-  void setNodeLinkMode();
-
-protected:
-  void mousePressEvent(QMouseEvent* e);
-  void mouseMoveEvent(QMouseEvent* e);
-  void enterEvent(QEvent* e);
-  void leaveEvent(QEvent* e);
-  void paintEvent(QPaintEvent*);
-
-private:
-  NetworkDiagram networkDiagram;
-  DesignMode designMode;
-};
-
-#endif

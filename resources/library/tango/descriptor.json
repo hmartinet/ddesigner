@@ -1,0 +1,33 @@
+{
+   "name":"tango",
+   "label":"Tango",
+   "categories":[
+      {
+         "name":"computer-desktop",
+         "label":"Desktop computer",
+         "types":[
+            {
+               "name":"computer-compaq-presario-sr2100",
+               "label":"Compaq Presario SR2100",
+               "imageType":"svg"
+            },
+            {
+               "name":"computer-hp-pavilion-t3700",
+               "label":"HP Pavilion T3700",
+               "imageType":"svg"
+            }
+         ]
+      },
+      {
+         "name":"computer-laptop",
+         "label":"Laptop computer",
+         "types":[
+            {
+               "name":"computer-laptop-lenovo-thinkpad-r61",
+               "label":"Lenovo Thinkpad R61",
+               "imageType":"svg"
+            }
+         ]
+      }
+   ]
+}

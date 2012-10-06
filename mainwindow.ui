@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
+    <width>645</width>
     <height>475</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>200</width>
+          <width>311</width>
           <height>344</height>
          </rect>
         </property>
@@ -45,7 +45,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>200</width>
+          <width>256</width>
           <height>344</height>
          </rect>
         </property>
@@ -65,22 +65,6 @@
             <property name="spacing">
              <number>2</number>
             </property>
-            <item row="0" column="0">
-             <widget class="QToolButton" name="nodeButton">
-              <property name="text">
-               <string>Node</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="autoExclusive">
-               <bool>true</bool>
-              </property>
-              <property name="autoRaise">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1" alignment="Qt::AlignLeft">
              <widget class="QToolButton" name="nodeLinkButton">
               <property name="text">
@@ -97,11 +81,27 @@
               </property>
              </widget>
             </item>
+            <item row="0" column="0">
+             <widget class="QToolButton" name="nodeButton">
+              <property name="text">
+               <string>Node</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
          <item>
-          <widget class="NodeListWidget" name="listWidget">
+          <widget class="NodeTypeListWidget" name="nodeTypeListWidget">
            <property name="viewMode">
             <enum>QListView::ListMode</enum>
            </property>
@@ -110,21 +110,12 @@
         </layout>
        </widget>
       </widget>
-      <widget class="DisplayWidget" name="widget" native="true">
+      <widget class="DiagramView" name="diagramView">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>1</horstretch>
-         <verstretch>1</verstretch>
+         <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>400</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>CrossCursor</cursorShape>
        </property>
       </widget>
      </widget>
@@ -136,7 +127,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>424</width>
+     <width>645</width>
      <height>22</height>
     </rect>
    </property>
@@ -154,54 +145,16 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>DisplayWidget</class>
-   <extends>QWidget</extends>
-   <header>displaywidget.h</header>
-   <container>1</container>
-   <slots>
-    <slot>setNodeMode()</slot>
-    <slot>setNodeLinkMode()</slot>
-   </slots>
+   <class>NodeTypeListWidget</class>
+   <extends>QListWidget</extends>
+   <header>nodetype/nodetypelistwidget.h</header>
   </customwidget>
   <customwidget>
-   <class>NodeListWidget</class>
-   <extends>QListWidget</extends>
-   <header>nodelistwidget.h</header>
+   <class>DiagramView</class>
+   <extends>QGraphicsView</extends>
+   <header>diagram/diagramview.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>nodeButton</sender>
-   <signal>clicked()</signal>
-   <receiver>widget</receiver>
-   <slot>setNodeMode()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>34</x>
-     <y>106</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>246</x>
-     <y>118</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>nodeLinkButton</sender>
-   <signal>clicked()</signal>
-   <receiver>widget</receiver>
-   <slot>setNodeLinkMode()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>103</x>
-     <y>107</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>254</x>
-     <y>87</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

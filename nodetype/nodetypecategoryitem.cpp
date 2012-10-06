@@ -2,17 +2,17 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QSize>
-#include "nodecategoryitemconnector.h"
-#include "nodecategoryitem.h"
+#include "nodetypecategoryitemconnector.h"
+#include "nodetypecategoryitem.h"
 
-NodeCategoryItem::NodeCategoryItem(QString label, QListWidget *parent) :
+NodeTypeCategoryItem::NodeTypeCategoryItem(QString label, QListWidget *parent) :
   QListWidgetItem(parent),
   hidden(false)
 {
   parent->addItem(this);
 
   QPushButton *button = new QPushButton(label);
-  QObject::connect(button, SIGNAL(clicked()), new NodeCategoryItemConnector(this), SLOT(toggleState()));
+  QObject::connect(button, SIGNAL(clicked()), new NodeTypeCategoryItemConnector(this), SLOT(toggleState()));
   button->setMaximumHeight(18);
   QHBoxLayout *layout= new QHBoxLayout();
   layout->setContentsMargins(0,0,0,0);
@@ -23,12 +23,12 @@ NodeCategoryItem::NodeCategoryItem(QString label, QListWidget *parent) :
   parent->setItemWidget(this, widget);
 }
 
-void NodeCategoryItem::addNode(QListWidgetItem* nodeItem)
+void NodeTypeCategoryItem::addNode(QListWidgetItem* nodeItem)
 {
   nodeItemList << nodeItem;
 }
 
-void NodeCategoryItem::toggleState()
+void NodeTypeCategoryItem::toggleState()
 {
   hidden = !hidden;
   foreach (QListWidgetItem* nodeItem, nodeItemList)

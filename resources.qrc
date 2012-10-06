@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>resources/shapes/computer-hp-pavilion-t3700.svg</file>
-        <file>resources/shapes/computer-compaq-presario-sr2100.svg</file>
-        <file>resources/shapes/computer-laptop-lenovo-thinkpad-r61.svg</file>
-    </qresource>
-</RCC>

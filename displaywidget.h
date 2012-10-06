@@ -19,23 +19,43 @@
 **
 ****************************************************************************/
 
-#ifndef NETWORKDIAGRAM_H
-#define NETWORKDIAGRAM_H
+#ifndef DISPLAYWIDGET_H
+#define DISPLAYWIDGET_H
 
+#include <QColor>
+#include <QWidget>
 #include <QList>
-#include "node.h"
-#include "nodelink.h"
+#include <QPoint>
+#include "networkdiagram/networkdiagramview.h"
+#include "networkdiagram/nodelink.h"
 
-class NetworkDiagram
+class DisplayWidget : public QWidget
 {
+  Q_OBJECT
+
 public:
-  NetworkDiagram();
-  QList<Node*> & getNodeList();
-  QList<NodeLink*> & getNodeLinkList();
+  enum DesignMode {
+    FREE_POINT,         // Get a new point
+    SELECT_NODE,        // Get an existing node
+    SELECT_NODE_LINK    // Get an existing node link
+  };
+
+  explicit DisplayWidget(QWidget* parent = 0);
+
+public slots:
+  void setNodeMode();
+  void setNodeLinkMode();
 
 protected:
-  QList<Node*> nodeList;
-  QList<NodeLink*> nodeLinkList;
+  void mousePressEvent(QMouseEvent* e);
+  void mouseMoveEvent(QMouseEvent* e);
+  void enterEvent(QEvent* e);
+  void leaveEvent(QEvent* e);
+  void paintEvent(QPaintEvent*);
+
+private:
+  NetworkDiagramView networkDiagram;
+  DesignMode designMode;
 };
 
-#endif // NETWORKDIAGRAM_H
+#endif

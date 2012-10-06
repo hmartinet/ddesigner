@@ -19,26 +19,29 @@
 **
 ****************************************************************************/
 
-#include <QPen>
-#include "nodelink.h"
+#ifndef DIAGRAMVIEW_H
+#define DIAGRAMVIEW_H
 
-NodeLink::NodeLink(Node * n1, Node * n2) :
-  pn1(n1), pn2(n2)
-{
-}
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QMap>
+#include <QSvgRenderer>
 
-Node * NodeLink::n1()
+class DiagramView : public QGraphicsView
 {
-  return pn1;
-}
+  Q_OBJECT
 
-Node * NodeLink::n2()
-{
-  return pn1;
-}
+public:
+  explicit DiagramView(QWidget* parent = 0);
 
-void NodeLink::paint(QPainter & painter)
-{
-  painter.setPen(QPen(Qt::black, 4, Qt::SolidLine));
-  painter.drawLine(pn1->p(), pn2->p());
-}
+protected:
+  void mousePressEvent(QMouseEvent* e);
+  QSvgRenderer* getSvgRenderer(QString filePath);
+
+private:
+  QGraphicsScene scene;
+
+  QMap<QString, QSvgRenderer*> svgRendererPool;
+};
+
+#endif // DIAGRAMVIEW_H
