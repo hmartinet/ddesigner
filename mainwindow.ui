@@ -32,7 +32,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>311</width>
+          <width>256</width>
           <height>344</height>
          </rect>
         </property>
@@ -148,13 +148,36 @@
    <class>NodeTypeListWidget</class>
    <extends>QListWidget</extends>
    <header>nodetype/nodetypelistwidget.h</header>
+   <slots>
+    <slot>createAction(QListWidgetItem*)</slot>
+   </slots>
   </customwidget>
   <customwidget>
    <class>DiagramView</class>
    <extends>QGraphicsView</extends>
    <header>diagram/diagramview.h</header>
+   <slots>
+    <slot>createAction(QListWidgetItem*)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>nodeTypeListWidget</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>diagramView</receiver>
+   <slot>createAction(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

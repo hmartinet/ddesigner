@@ -27,6 +27,7 @@
 #include <QMap>
 #include <QSvgRenderer>
 #include <QMouseEvent>
+#include <QListWidgetItem>
 #include "actionpool.h"
 
 class DiagramView : public QGraphicsView
@@ -47,6 +48,9 @@ private:
   ActionPool actionPool;
 
   QMap<QString, QSvgRenderer*> svgRendererPool;
+
+public slots:
+  void createAction(QListWidgetItem *item);
 };
 
 #endif // DIAGRAMVIEW_H

@@ -19,8 +19,10 @@
 **
 ****************************************************************************/
 
+#include <QDebug>
 #include "diagramview.h"
 #include "freepointaction.h"
+#include "addsvgnodeaction.h"
 
 DiagramView::DiagramView(QWidget *parent) :
   QGraphicsView(parent)
@@ -53,5 +55,18 @@ QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
 QGraphicsScene &DiagramView::getScene()
 {
   return this->scene;
+}
+
+void DiagramView::createAction(QListWidgetItem *item)
+{
+  QString type = item->data(Qt::UserRole).toString();
+
+  if (type == "svg")
+    {
+      qDebug() << "action created";
+      QString label = item->data(Qt::UserRole + 1).toString();
+      QString filePath = item->data(Qt::UserRole + 2).toString();
+      this->actionPool.setFreePointAction(new AddSvgNodeAction(this, label, filePath));
+    }
 }
 
