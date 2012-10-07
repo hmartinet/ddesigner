@@ -2,6 +2,8 @@
 #define NODETYPEITEM_H
 
 #include <QListWidgetItem>
+#include <QSvgRenderer>
+#include <QVariant>
 
 class NodeTypeItem : public QListWidgetItem
 {

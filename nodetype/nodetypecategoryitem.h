@@ -2,6 +2,10 @@
 #define NODETYPECATEGORYITEM_H
 
 #include <QListWidgetItem>
+#include <QPushButton>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QSize>
 
 class NodeTypeCategoryItem : public QListWidgetItem
 {

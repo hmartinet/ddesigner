@@ -19,9 +19,8 @@
 **
 ****************************************************************************/
 
-#include <QMouseEvent>
 #include "diagramview.h"
-#include "svgnodeitem.h"
+#include "freepointaction.h"
 
 DiagramView::DiagramView(QWidget *parent) :
   QGraphicsView(parent)
@@ -34,7 +33,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 {
   if(e->button() == Qt::LeftButton)
     {
-//      this->scene.addItem(new SvgNodeItem(this->mapToScene(e->pos())));
+      if (actionPool.isFreePointAction())
+        {
+          actionPool.getFreePointAction()->setPoint(this->mapToScene(e->pos()));
+          actionPool.getFreePointAction()->execute();
+        }
     }
 }
 
@@ -45,5 +48,10 @@ QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
       svgRendererPool.insert(filePath, new QSvgRenderer(filePath));
     }
   return svgRendererPool.value(filePath);
+}
+
+QGraphicsScene &DiagramView::getScene()
+{
+  return this->scene;
 }
 

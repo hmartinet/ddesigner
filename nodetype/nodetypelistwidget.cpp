@@ -1,12 +1,5 @@
-#include <QFile>
-#include <QDebug>
-#include <QListWidgetItem>
-#include <QTextStream>
-#include "qjson/qobjecthelper.h"
-#include "qjson/parser.h"
-#include "nodetypecategoryitem.h"
+
 #include "nodetypelistwidget.h"
-#include "nodetypeitem.h"
 
 NodeTypeListWidget::NodeTypeListWidget(QWidget *parent) :
   QListWidget(parent)

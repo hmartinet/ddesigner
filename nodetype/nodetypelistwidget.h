@@ -2,6 +2,14 @@
 #define NODETYPELISTWIDGET_H
 
 #include <QListWidget>
+#include <QFile>
+#include <QDebug>
+#include <QListWidgetItem>
+#include <QTextStream>
+#include "qjson/qobjecthelper.h"
+#include "qjson/parser.h"
+#include "nodetypecategoryitem.h"
+#include "nodetypeitem.h"
 
 class NodeTypeListWidget : public QListWidget
 {

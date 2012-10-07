@@ -1,9 +1,6 @@
-#include <QPushButton>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QSize>
-#include "nodetypecategoryitemconnector.h"
+
 #include "nodetypecategoryitem.h"
+#include "nodetypecategoryitemconnector.h"
 
 NodeTypeCategoryItem::NodeTypeCategoryItem(QString label, QListWidget *parent) :
   QListWidgetItem(parent),
