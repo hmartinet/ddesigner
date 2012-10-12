@@ -8,7 +8,7 @@
 class SvgNodeItem : public QGraphicsSvgItem
 {
 public:
-  SvgNodeItem(QPointF position, QSvgRenderer* renderer);
+  SvgNodeItem(QPointF position, QSvgRenderer* renderer, const QString& label);
 
 private:
 
