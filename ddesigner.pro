@@ -20,8 +20,9 @@ SOURCES += mainwindow.cpp \
     diagram/svgnodeitem.cpp \
     diagram/diagramview.cpp \
     diagram/nodelabelitem.cpp \
-    diagram/addnodeactionmode.cpp \
-    diagram/diagramactionmode.cpp
+    diagram/noactionmode.cpp \
+    diagram/diagrammode.cpp \
+    diagram/addsvgnodeitemmode.cpp
 
 HEADERS  += mainwindow.h \
     nodetype/nodetypecategoryitem.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     diagram/svgnodeitem.h \
     diagram/diagramview.h \
     diagram/nodelabelitem.h \
-    diagram/diagramactionmode.h \
-    diagram/addnodeactionmode.h
+    diagram/noactionmode.h \
+    diagram/diagrammode.h \
+    diagram/addsvgnodeitemmode.h
 
 FORMS    += mainwindow.ui

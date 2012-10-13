@@ -21,9 +21,12 @@
 
 #include <QDebug>
 #include "diagramview.h"
+#include "noactionmode.h"
+#include "addsvgnodeitemmode.h"
 
 DiagramView::DiagramView(QWidget *parent) :
-  QGraphicsView(parent)
+  QGraphicsView(parent),
+  mode(new NoActionMode(this))
 {
   this->scene.setSceneRect(0,0,1,1);
   this->setScene(&this->scene);
@@ -31,14 +34,7 @@ DiagramView::DiagramView(QWidget *parent) :
 
 void DiagramView::mousePressEvent(QMouseEvent *e)
 {
-  if(e->button() == Qt::LeftButton)
-    {
-//      if (actionPool.isFreePointAction())
-//        {
-//          actionPool.getFreePointAction()->setPoint(this->mapToScene(e->pos()));
-//          actionPool.getFreePointAction()->execute();
-//        }
-    }
+  this->mode->mousePressEvent(e);
 }
 
 QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
@@ -63,7 +59,11 @@ void DiagramView::createAction(QListWidgetItem *item)
     {
       QString label = item->data(Qt::UserRole + 1).toString();
       QString filePath = item->data(Qt::UserRole + 2).toString();
-      // this->actionPool.setFreePointAction(new AddSvgNodeAction(this, label, filePath));
+
+      delete this->mode;
+      this->mode = new AddSvgNodeItemMode(this,
+                                          this->getSvgRenderer(filePath),
+                                          label);
     }
 }
 
