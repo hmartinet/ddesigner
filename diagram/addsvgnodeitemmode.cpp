@@ -13,12 +13,15 @@ AddSvgNodeItemMode::AddSvgNodeItemMode(QGraphicsView* view,
 {
 }
 
-void AddSvgNodeItemMode::mousePressEvent(QMouseEvent *e)
+bool AddSvgNodeItemMode::mousePressEvent(QMouseEvent *e)
 {
     if(e->button() == Qt::LeftButton)
       {
         this->addNode(this->view->mapToScene(e->pos()));
+        return true;
       }
+
+    return false;
 }
 
 void AddSvgNodeItemMode::addNode(QPointF position)

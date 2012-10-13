@@ -9,7 +9,7 @@ class DiagramMode
 public:
   DiagramMode(QGraphicsView* view);
 
-  virtual void mousePressEvent(QMouseEvent* e);
+  virtual bool mousePressEvent(QMouseEvent* e);
 
 protected:
   QGraphicsView* view;

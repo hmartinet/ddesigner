@@ -34,7 +34,10 @@ DiagramView::DiagramView(QWidget *parent) :
 
 void DiagramView::mousePressEvent(QMouseEvent *e)
 {
-  this->mode->mousePressEvent(e);
+  if (!this->mode->mousePressEvent(e))
+    {
+      QGraphicsView::mousePressEvent(e);
+    }
 }
 
 QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
@@ -64,6 +67,12 @@ void DiagramView::createAction(QListWidgetItem *item)
       this->mode = new AddSvgNodeItemMode(this,
                                           this->getSvgRenderer(filePath),
                                           label);
-    }
+  }
+}
+
+void DiagramView::setSelectionMode()
+{
+  delete this->mode;
+  this->mode = new NoActionMode(this);
 }
 

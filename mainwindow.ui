@@ -59,13 +59,7 @@
          <item>
           <widget class="QWidget" name="widget_2" native="true">
            <layout class="QGridLayout" name="gridLayout">
-            <property name="margin">
-             <number>0</number>
-            </property>
-            <property name="spacing">
-             <number>2</number>
-            </property>
-            <item row="0" column="1" alignment="Qt::AlignLeft">
+            <item row="0" column="1">
              <widget class="QToolButton" name="nodeLinkButton">
               <property name="text">
                <string>Node link</string>
@@ -81,10 +75,26 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
+            <item row="0" column="2">
              <widget class="QToolButton" name="nodeButton">
               <property name="text">
                <string>Node</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QToolButton" name="selectionButton">
+              <property name="text">
+               <string>Selection</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -158,6 +168,7 @@
    <header>diagram/diagramview.h</header>
    <slots>
     <slot>createAction(QListWidgetItem*)</slot>
+    <slot>setSelectionMode()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -172,6 +183,22 @@
     <hint type="sourcelabel">
      <x>136</x>
      <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectionButton</sender>
+   <signal>clicked()</signal>
+   <receiver>diagramView</receiver>
+   <slot>setSelectionMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>453</x>

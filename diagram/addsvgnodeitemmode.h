@@ -12,7 +12,7 @@ public:
                      QSvgRenderer* renderer,
                      const QString label);
 
-  void mousePressEvent(QMouseEvent* e);
+  bool mousePressEvent(QMouseEvent* e);
 
 protected:
   void addNode(QPointF position);

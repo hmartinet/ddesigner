@@ -4,13 +4,16 @@
 #include <QGraphicsSvgItem>
 #include <QPointF>
 #include <QSvgRenderer>
+#include <QStyleOptionGraphicsItem>
+#include <QWidget>
 
 class SvgNodeItem : public QGraphicsSvgItem
 {
 public:
   SvgNodeItem(QPointF position, QSvgRenderer* renderer, const QString& label);
 
-private:
+  QRectF boundingRect() const;
+  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 };
 

@@ -35,6 +35,8 @@ class DiagramView : public QGraphicsView
   Q_OBJECT
 
 public:
+  static const int SELECTION_OFFSET = 4;
+
   explicit DiagramView(QWidget* parent = 0);
 
   QSvgRenderer* getSvgRenderer(QString filePath);
@@ -51,6 +53,7 @@ private:
 
 public slots:
   void createAction(QListWidgetItem *item);
+  void setSelectionMode();
 };
 
 #endif // DIAGRAMVIEW_H

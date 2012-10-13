@@ -5,6 +5,7 @@ NoActionMode::NoActionMode(QGraphicsView* view) :
 {
 }
 
-void NoActionMode::mousePressEvent(QMouseEvent *e)
+bool NoActionMode::mousePressEvent(QMouseEvent *e)
 {
+  return false;
 }

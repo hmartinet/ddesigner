@@ -10,7 +10,7 @@ class NoActionMode : public DiagramMode
 public:
   NoActionMode(QGraphicsView* view);
 
-  void mousePressEvent(QMouseEvent* e);
+  bool mousePressEvent(QMouseEvent* e);
 };
 
 #endif // NOACTIONMODE_H

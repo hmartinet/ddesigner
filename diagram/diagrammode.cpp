@@ -5,6 +5,7 @@ DiagramMode::DiagramMode(QGraphicsView* view):
 {
 }
 
-void DiagramMode::mousePressEvent(QMouseEvent *e)
+bool DiagramMode::mousePressEvent(QMouseEvent *e)
 {
+  return false;
 }

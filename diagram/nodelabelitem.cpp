@@ -1,6 +1,7 @@
 #include "nodelabelitem.h"
 #include <QTextBlockFormat>
 #include <QTextCursor>
+#include "diagramview.h"
 
 NodeLabelItem::NodeLabelItem(const QString& text, QGraphicsItem* parent) :
   QGraphicsTextItem(text, parent)
@@ -13,5 +14,6 @@ NodeLabelItem::NodeLabelItem(const QString& text, QGraphicsItem* parent) :
   cursor.mergeBlockFormat(format);
   cursor.clearSelection();
   this->setTextCursor(cursor);
-  this->setPos(QPointF((parent->boundingRect().width() - this->boundingRect().width()) / 2, parent->boundingRect().height()));
+  this->setPos(QPointF((parent->boundingRect().width() - this->boundingRect().width()) / 2 - DiagramView::SELECTION_OFFSET,
+                       parent->boundingRect().height() - DiagramView::SELECTION_OFFSET));
 }
