@@ -40,13 +40,15 @@ public:
   explicit DiagramView(QWidget* parent = 0);
 
   QSvgRenderer* getSvgRenderer(QString filePath);
-  QGraphicsScene& getScene();
+  DiagramMode* getMode();
 
 protected:
   void mousePressEvent(QMouseEvent* e);
+  void mouseMoveEvent(QMouseEvent* e);
+  void enterEvent(QEvent* e);
+  void leaveEvent(QEvent* e);
 
 private:
-  QGraphicsScene scene;
   DiagramMode* mode;
 
   QMap<QString, QSvgRenderer*> svgRendererPool;

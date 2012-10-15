@@ -2,29 +2,51 @@
 #include <QDebug>
 #include <QPointF>
 #include "addsvgnodeitemmode.h"
-#include "svgnodeitem.h"
 
-AddSvgNodeItemMode::AddSvgNodeItemMode(QGraphicsView* view,
+AddSvgNodeItemMode::AddSvgNodeItemMode(DiagramView* view,
                                        QSvgRenderer* renderer,
                                        const QString label) :
   DiagramMode(view),
   renderer(renderer),
   label(label)
 {
+  placementItem = new SvgNodeItem(view, QPointF(0, 0), renderer, label, true);
+}
+
+AddSvgNodeItemMode::~AddSvgNodeItemMode()
+{
+  delete placementItem;
 }
 
 bool AddSvgNodeItemMode::mousePressEvent(QMouseEvent *e)
 {
     if(e->button() == Qt::LeftButton)
       {
-        this->addNode(this->view->mapToScene(e->pos()));
+        addNode(view->mapToScene(e->pos()));
         return true;
       }
 
     return false;
 }
 
+bool AddSvgNodeItemMode::mouseMoveEvent(QMouseEvent *e)
+{
+  placementItem->setCenter(view->mapToScene(e->pos()));
+  return true;
+}
+
+bool AddSvgNodeItemMode::enterEvent(QEvent *e)
+{
+  view->scene()->addItem(placementItem);
+}
+
+bool AddSvgNodeItemMode::leaveEvent(QEvent *e)
+{
+  view->scene()->removeItem(placementItem);
+}
+
 void AddSvgNodeItemMode::addNode(QPointF position)
 {
-  this->view->scene()->addItem(new SvgNodeItem(position, this->renderer, this->label));
+  view->scene()->addItem(
+        new SvgNodeItem(view, position, renderer, label));
 }

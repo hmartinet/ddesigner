@@ -11,7 +11,7 @@
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
@@ -23,6 +23,12 @@
          <width>200</width>
          <height>400</height>
         </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
        </property>
        <property name="currentIndex">
         <number>1</number>
@@ -57,28 +63,24 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QWidget" name="widget_2" native="true">
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="1">
-             <widget class="QToolButton" name="nodeLinkButton">
-              <property name="text">
-               <string>Node link</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="autoExclusive">
-               <bool>true</bool>
-              </property>
-              <property name="autoRaise">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
+          <widget class="QWidget" name="toolsWidget" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <layout class="QGridLayout" name="gridLayout" rowstretch="0">
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
             <item row="0" column="2">
-             <widget class="QToolButton" name="nodeButton">
+             <widget class="QToolButton" name="nodeToolButton">
               <property name="text">
-               <string>Node</string>
+               <string>N</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -91,10 +93,26 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="3">
-             <widget class="QToolButton" name="selectionButton">
+            <item row="0" column="1">
+             <widget class="QToolButton" name="nodeLinkToolButton">
               <property name="text">
-               <string>Selection</string>
+               <string>L</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3" alignment="Qt::AlignLeft">
+             <widget class="QToolButton" name="moveToolButton">
+              <property name="text">
+               <string>M</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -111,10 +129,22 @@
           </widget>
          </item>
          <item>
-          <widget class="NodeTypeListWidget" name="nodeTypeListWidget">
-           <property name="viewMode">
-            <enum>QListView::ListMode</enum>
-           </property>
+          <widget class="OptionsStackedWidget" name="optionsWidget">
+           <widget class="QWidget" name="selectionOptions"/>
+           <widget class="QWidget" name="nodeOptions">
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="NodeTypeListWidget" name="nodeTypeListWidget">
+               <property name="viewMode">
+                <enum>QListView::ListMode</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
          </item>
         </layout>
@@ -126,6 +156,9 @@
          <horstretch>1</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>
@@ -155,56 +188,26 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>NodeTypeListWidget</class>
-   <extends>QListWidget</extends>
-   <header>nodetype/nodetypelistwidget.h</header>
-   <slots>
-    <slot>createAction(QListWidgetItem*)</slot>
-   </slots>
-  </customwidget>
-  <customwidget>
    <class>DiagramView</class>
    <extends>QGraphicsView</extends>
    <header>diagram/diagramview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>NodeTypeListWidget</class>
+   <extends>QListWidget</extends>
+   <header>nodetype/nodetypelistwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>OptionsStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>nodetype/optionsstackedwidget.h</header>
+   <container>1</container>
    <slots>
-    <slot>createAction(QListWidgetItem*)</slot>
-    <slot>setSelectionMode()</slot>
+    <slot>showSelectionOptions()</slot>
+    <slot>showNodeOptions()</slot>
    </slots>
   </customwidget>
  </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>nodeTypeListWidget</sender>
-   <signal>itemClicked(QListWidgetItem*)</signal>
-   <receiver>diagramView</receiver>
-   <slot>createAction(QListWidgetItem*)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>136</x>
-     <y>285</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>453</x>
-     <y>243</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>selectionButton</sender>
-   <signal>clicked()</signal>
-   <receiver>diagramView</receiver>
-   <slot>setSelectionMode()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>208</x>
-     <y>119</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>453</x>
-     <y>243</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -1,7 +1,11 @@
 #include "noactionmode.h"
 
-NoActionMode::NoActionMode(QGraphicsView* view) :
+NoActionMode::NoActionMode(DiagramView* view) :
   DiagramMode(view)
+{
+}
+
+void NoActionMode::paintSelection(QPainter *painter)
 {
 }
 

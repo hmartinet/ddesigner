@@ -22,22 +22,47 @@
 #include <QDebug>
 #include "diagramview.h"
 #include "noactionmode.h"
+#include "moveitemmode.h"
 #include "addsvgnodeitemmode.h"
 
 DiagramView::DiagramView(QWidget *parent) :
   QGraphicsView(parent),
   mode(new NoActionMode(this))
 {
-  this->scene.setSceneRect(0,0,1,1);
-  this->setScene(&this->scene);
+  this->setScene(new QGraphicsScene());
+  this->scene()->setSceneRect(0,0,1,1);
 }
 
-void DiagramView::mousePressEvent(QMouseEvent *e)
+void DiagramView::mousePressEvent(QMouseEvent* e)
 {
   if (!this->mode->mousePressEvent(e))
     {
       QGraphicsView::mousePressEvent(e);
-    }
+  }
+}
+
+void DiagramView::mouseMoveEvent(QMouseEvent* e)
+{
+  if (!this->mode->mouseMoveEvent(e))
+    {
+      QGraphicsView::mouseMoveEvent(e);
+  }
+}
+
+void DiagramView::enterEvent(QEvent *e)
+{
+  if (!this->mode->enterEvent(e))
+    {
+      QGraphicsView::enterEvent(e);
+  }
+}
+
+void DiagramView::leaveEvent(QEvent *e)
+{
+  if (!this->mode->leaveEvent(e))
+    {
+      QGraphicsView::leaveEvent(e);
+  }
 }
 
 QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
@@ -49,9 +74,9 @@ QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
   return svgRendererPool.value(filePath);
 }
 
-QGraphicsScene &DiagramView::getScene()
+DiagramMode *DiagramView::getMode()
 {
-  return this->scene;
+  return this->mode;
 }
 
 void DiagramView::createAction(QListWidgetItem *item)
@@ -73,6 +98,6 @@ void DiagramView::createAction(QListWidgetItem *item)
 void DiagramView::setSelectionMode()
 {
   delete this->mode;
-  this->mode = new NoActionMode(this);
+  this->mode = new MoveItemMode(this);
 }
 

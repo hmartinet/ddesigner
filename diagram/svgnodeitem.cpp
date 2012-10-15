@@ -5,17 +5,34 @@
 #include "svgnodeitem.h"
 #include "nodelabelitem.h"
 
-SvgNodeItem::SvgNodeItem(QPointF position, QSvgRenderer* renderer, const QString& label) :
-  QGraphicsSvgItem()
+SvgNodeItem::SvgNodeItem(DiagramView* diagramView, QPointF position,
+                         QSvgRenderer* renderer, const QString& label,
+                         bool placement) :
+  QGraphicsSvgItem(),
+  diagramView(diagramView),
+  placement(placement)
 {
-  this->setSharedRenderer(renderer);
-  this->setPos(position - QPointF(this->boundingRect().width() / 2 - DiagramView::SELECTION_OFFSET,
-                                  this->boundingRect().height() / 2 - DiagramView::SELECTION_OFFSET));
-  this->setFlag(QGraphicsItem::ItemIsSelectable);
-  this->setFlag(QGraphicsItem::ItemIsMovable);
-  this->setFlag(QGraphicsItem::ItemSendsGeometryChanges);
+  setOpacity(placement ? .5 : 1.);
+  setSharedRenderer(renderer);
+  setCenter(position);
+  if (!placement)
+    {
+      setFlag(QGraphicsItem::ItemIsSelectable);
+      setFlag(QGraphicsItem::ItemIsMovable);
+      setFlag(QGraphicsItem::ItemSendsGeometryChanges);
 
-  new NodeLabelItem(label, this);
+      new NodeLabelItem(label, this);
+  }
+}
+
+SvgNodeItem::~SvgNodeItem()
+{
+}
+
+void SvgNodeItem::setCenter(QPointF center)
+{
+  setPos(center - QPointF(boundingRect().width() / 2 - DiagramView::SELECTION_OFFSET,
+                          boundingRect().height() / 2 - DiagramView::SELECTION_OFFSET));
 }
 
 QRectF SvgNodeItem::boundingRect() const
@@ -32,10 +49,8 @@ void SvgNodeItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* optio
   tmpOption->state &= ~QStyle::State_Selected;
   QGraphicsSvgItem::paint(painter, tmpOption, widget);
 
-  if (option->state & (QStyle::State_Selected | QStyle::State_HasFocus))
+  if (option->state & QStyle::State_Selected)
     {
-      painter->setPen(QPen(Qt::darkGray, 0, Qt::DotLine));
-      painter->setBrush(Qt::NoBrush);
-      painter->drawRect(this->boundingRect());
+      diagramView->getMode()->paintSelection(this, painter);
     }
 }
