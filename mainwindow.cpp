@@ -33,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
   QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setSelectionMode()));
   QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showSelectionOptions()));
+
+  QObject::connect(ui->gridCheckBox, SIGNAL(toggled(bool)), ui->diagramView, SLOT(setDisplayGrid(bool)));
+  ui->diagramView->setDisplayGrid(ui->gridCheckBox->isChecked());
 }
 
 MainWindow::~MainWindow()

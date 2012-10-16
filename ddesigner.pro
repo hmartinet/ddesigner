@@ -24,7 +24,8 @@ SOURCES += mainwindow.cpp \
     diagram/diagrammode.cpp \
     diagram/addsvgnodeitemmode.cpp \
     nodetype/optionsstackedwidget.cpp \
-    diagram/moveitemmode.cpp
+    diagram/moveitemmode.cpp \
+    diagram/diagramscene.cpp
 
 HEADERS  += mainwindow.h \
     nodetype/nodetypecategoryitem.h \
@@ -38,6 +39,7 @@ HEADERS  += mainwindow.h \
     diagram/diagrammode.h \
     diagram/addsvgnodeitemmode.h \
     nodetype/optionsstackedwidget.h \
-    diagram/moveitemmode.h
+    diagram/moveitemmode.h \
+    diagram/diagramscene.h
 
 FORMS    += mainwindow.ui

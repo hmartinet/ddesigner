@@ -14,12 +14,13 @@ void MoveItemMode::paintSelection(QGraphicsItem *item, QPainter *painter)
   painter->restore();
 }
 
+bool MoveItemMode::mouseMoveEvent(QMouseEvent *e)
+{
+  return false;
+}
+
 bool MoveItemMode::mousePressEvent(QMouseEvent *e)
 {
   return false;
 }
 
-bool MoveItemMode::mouseMoveEvent(QMouseEvent *e)
-{
-  return false;
-}

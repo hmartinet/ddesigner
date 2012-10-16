@@ -6,6 +6,7 @@
 #include <QSvgRenderer>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
+#include <QVariant>
 #include "diagramview.h"
 
 class SvgNodeItem : public QGraphicsSvgItem
@@ -16,6 +17,8 @@ public:
               bool placement=false);
   ~SvgNodeItem();
 
+  inline QPointF topLeft(QPointF center);
+  inline QPointF center(QPointF topLeft);
   void setCenter(QPointF center);
 
   QRectF boundingRect() const;
@@ -24,6 +27,8 @@ public:
 private:
   DiagramView* diagramView;
   bool placement;
+
+  QVariant itemChange(GraphicsItemChange change, const QVariant &value);
 
 };
 

@@ -28,7 +28,9 @@
 #include <QSvgRenderer>
 #include <QMouseEvent>
 #include <QListWidgetItem>
+#include <QPointF>
 #include "diagrammode.h"
+#include "diagramscene.h"
 
 class DiagramView : public QGraphicsView
 {
@@ -42,6 +44,9 @@ public:
   QSvgRenderer* getSvgRenderer(QString filePath);
   DiagramMode* getMode();
 
+  QPointF snapToGrid(const QPointF &point) const;
+  QPointF mapToScene(const QPoint &point) const;
+
 protected:
   void mousePressEvent(QMouseEvent* e);
   void mouseMoveEvent(QMouseEvent* e);
@@ -49,6 +54,7 @@ protected:
   void leaveEvent(QEvent* e);
 
 private:
+  DiagramScene* diagramScene;
   DiagramMode* mode;
 
   QMap<QString, QSvgRenderer*> svgRendererPool;
@@ -56,6 +62,7 @@ private:
 public slots:
   void createAction(QListWidgetItem *item);
   void setSelectionMode();
+  void setDisplayGrid(bool displayGrid);
 };
 
 #endif // DIAGRAMVIEW_H

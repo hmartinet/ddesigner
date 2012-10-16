@@ -22,17 +22,28 @@ SvgNodeItem::SvgNodeItem(DiagramView* diagramView, QPointF position,
       setFlag(QGraphicsItem::ItemSendsGeometryChanges);
 
       new NodeLabelItem(label, this);
-  }
+    }
 }
 
 SvgNodeItem::~SvgNodeItem()
 {
 }
 
+QPointF SvgNodeItem::topLeft(QPointF center)
+{
+  return center - QPointF(boundingRect().width() / 2 - DiagramView::SELECTION_OFFSET,
+                          boundingRect().height() / 2 - DiagramView::SELECTION_OFFSET);
+}
+
+QPointF SvgNodeItem::center(QPointF topLeft)
+{
+  return topLeft + QPointF(boundingRect().width() / 2 - DiagramView::SELECTION_OFFSET,
+                           boundingRect().height() / 2 - DiagramView::SELECTION_OFFSET);
+}
+
 void SvgNodeItem::setCenter(QPointF center)
 {
-  setPos(center - QPointF(boundingRect().width() / 2 - DiagramView::SELECTION_OFFSET,
-                          boundingRect().height() / 2 - DiagramView::SELECTION_OFFSET));
+  setPos(topLeft(center));
 }
 
 QRectF SvgNodeItem::boundingRect() const
@@ -53,4 +64,13 @@ void SvgNodeItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* optio
     {
       diagramView->getMode()->paintSelection(this, painter);
     }
+}
+
+QVariant SvgNodeItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+{
+  if (change == QGraphicsItem::ItemPositionChange && this->scene())
+    {
+      return topLeft(diagramView->snapToGrid(center(value.toPointF())));
+    }
+  return QGraphicsSvgItem::itemChange(change, value);
 }

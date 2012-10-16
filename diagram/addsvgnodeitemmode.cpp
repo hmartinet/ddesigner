@@ -38,11 +38,13 @@ bool AddSvgNodeItemMode::mouseMoveEvent(QMouseEvent *e)
 bool AddSvgNodeItemMode::enterEvent(QEvent *e)
 {
   view->scene()->addItem(placementItem);
+  return true;
 }
 
 bool AddSvgNodeItemMode::leaveEvent(QEvent *e)
 {
   view->scene()->removeItem(placementItem);
+  return true;
 }
 
 void AddSvgNodeItemMode::addNode(QPointF position)

@@ -24,13 +24,14 @@
 #include "noactionmode.h"
 #include "moveitemmode.h"
 #include "addsvgnodeitemmode.h"
+#include "diagramscene.h"
 
 DiagramView::DiagramView(QWidget *parent) :
   QGraphicsView(parent),
   mode(new NoActionMode(this))
 {
-  this->setScene(new QGraphicsScene());
-  this->scene()->setSceneRect(0,0,1,1);
+  setScene(diagramScene = new DiagramScene(this));
+  scene()->setSceneRect(0,0,1,1);
 }
 
 void DiagramView::mousePressEvent(QMouseEvent* e)
@@ -79,6 +80,16 @@ DiagramMode *DiagramView::getMode()
   return this->mode;
 }
 
+QPointF DiagramView::snapToGrid(const QPointF &point) const
+{
+  return diagramScene->nearestValid(point);
+}
+
+QPointF DiagramView::mapToScene(const QPoint &point) const
+{
+  return diagramScene->nearestValid(QGraphicsView::mapToScene(point));
+}
+
 void DiagramView::createAction(QListWidgetItem *item)
 {
   QString type = item->data(Qt::UserRole).toString();
@@ -99,5 +110,10 @@ void DiagramView::setSelectionMode()
 {
   delete this->mode;
   this->mode = new MoveItemMode(this);
+}
+
+void DiagramView::setDisplayGrid(bool displayGrid)
+{
+  diagramScene->setDisplayGrid(displayGrid);
 }
 
