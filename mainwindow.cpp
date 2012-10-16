@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
 
+  QObject::connect(ui->listWidget, SIGNAL(currentRowChanged(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
+
   QObject::connect(ui->nodeTypeListWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->diagramView, SLOT(createAction(QListWidgetItem*)));
   QObject::connect(ui->nodeToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showNodeOptions()));
 
@@ -42,4 +44,5 @@ MainWindow::~MainWindow()
 {
   delete ui;
 }
+
 

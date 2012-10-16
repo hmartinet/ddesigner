@@ -2,63 +2,85 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>645</width>
-    <height>475</height>
-   </rect>
-  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QListWidget" name="listWidget">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 71, 127);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>File</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignLeft|AlignVCenter</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Diagram</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Grid</string>
+       </property>
+      </item>
+     </widget>
+    </item>
     <item>
      <widget class="QSplitter" name="splitter">
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QToolBox" name="toolBox">
+      <property name="handleWidth">
+       <number>1</number>
+      </property>
+      <widget class="QStackedWidget" name="stackedWidget">
        <property name="minimumSize">
         <size>
          <width>200</width>
-         <height>400</height>
+         <height>0</height>
         </size>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
-       <widget class="QWidget" name="filePage">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>200</width>
-          <height>316</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>File</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="nodePage">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>200</width>
-          <height>316</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>Nodes</string>
-        </attribute>
+       <widget class="QWidget" name="filePage"/>
+       <widget class="QWidget" name="diagramPage">
         <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <property name="margin">
           <number>0</number>
          </property>
@@ -138,6 +160,12 @@
              </property>
              <item>
               <widget class="NodeTypeListWidget" name="nodeTypeListWidget">
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="lineWidth">
+                <number>0</number>
+               </property>
                <property name="viewMode">
                 <enum>QListView::ListMode</enum>
                </property>
@@ -150,17 +178,6 @@
         </layout>
        </widget>
        <widget class="QWidget" name="gridPage">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>200</width>
-          <height>316</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>Grid</string>
-        </attribute>
         <layout class="QFormLayout" name="formLayout">
          <item row="0" column="0">
           <widget class="QCheckBox" name="gridCheckBox">
@@ -182,30 +199,23 @@
        <property name="mouseTracking">
         <bool>true</bool>
        </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
       </widget>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>645</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
