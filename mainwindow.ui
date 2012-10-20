@@ -2,7 +2,21 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>671</width>
+    <height>454</height>
+   </rect>
+  </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
      <number>0</number>
@@ -11,54 +25,158 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QWidget" name="mainToolbar" native="true">
       <property name="minimumSize">
        <size>
-        <width>80</width>
+        <width>70</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>80</width>
+        <width>70</width>
         <height>16777215</height>
        </size>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 71, 127);
-color: rgb(255, 255, 255);</string>
+      <property name="autoFillBackground">
+       <bool>true</bool>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="lineWidth">
-       <number>0</number>
-      </property>
-      <item>
-       <property name="text">
-        <string>File</string>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
        </property>
-       <property name="textAlignment">
-        <set>AlignLeft|AlignVCenter</set>
+       <property name="leftMargin">
+        <number>0</number>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Diagram</string>
+       <property name="topMargin">
+        <number>10</number>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Grid</string>
+       <property name="rightMargin">
+        <number>0</number>
        </property>
-      </item>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QToolButton" name="fileToolButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>File</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/maintoolbar/file</normaloff>:/maintoolbar/file</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::DelayedPopup</enum>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="editToolButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Edit</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/maintoolbar/edit</normaloff>:/maintoolbar/edit</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="gridToolButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Grid</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/maintoolbar/grid</normaloff>:/maintoolbar/grid</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>
      <widget class="QSplitter" name="splitter">
-      <property name="lineWidth">
-       <number>0</number>
-      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -68,14 +186,20 @@ color: rgb(255, 255, 255);</string>
       <widget class="QStackedWidget" name="stackedWidget">
        <property name="minimumSize">
         <size>
-         <width>200</width>
+         <width>256</width>
          <height>0</height>
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
-       <widget class="QWidget" name="filePage"/>
+       <widget class="QWidget" name="filePage">
+        <layout class="QFormLayout" name="formLayout_2">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+        </layout>
+       </widget>
        <widget class="QWidget" name="diagramPage">
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="spacing">
@@ -86,23 +210,21 @@ color: rgb(255, 255, 255);</string>
          </property>
          <item>
           <widget class="QWidget" name="toolsWidget" native="true">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>1</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <layout class="QGridLayout" name="gridLayout" rowstretch="0">
-            <property name="margin">
+           <layout class="QFormLayout" name="formLayout_4">
+            <property name="horizontalSpacing">
              <number>0</number>
             </property>
-            <property name="spacing">
+            <property name="verticalSpacing">
              <number>0</number>
             </property>
-            <item row="0" column="2">
+            <item row="0" column="0">
              <widget class="QToolButton" name="nodeToolButton">
               <property name="text">
                <string>N</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons.qrc">
+                <normaloff>:/tools/node</normaloff>:/tools/node</iconset>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -116,25 +238,13 @@ color: rgb(255, 255, 255);</string>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QToolButton" name="nodeLinkToolButton">
-              <property name="text">
-               <string>L</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="autoExclusive">
-               <bool>true</bool>
-              </property>
-              <property name="autoRaise">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3" alignment="Qt::AlignLeft">
              <widget class="QToolButton" name="moveToolButton">
               <property name="text">
                <string>M</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons.qrc">
+                <normaloff>:/tools/move</normaloff>:/tools/move</iconset>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -152,7 +262,16 @@ color: rgb(255, 255, 255);</string>
          </item>
          <item>
           <widget class="OptionsStackedWidget" name="optionsWidget">
-           <widget class="QWidget" name="selectionOptions"/>
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <widget class="QWidget" name="selectionOptions">
+            <layout class="QFormLayout" name="formLayout_3">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+             </property>
+            </layout>
+           </widget>
            <widget class="QWidget" name="nodeOptions">
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <property name="margin">
@@ -160,14 +279,23 @@ color: rgb(255, 255, 255);</string>
              </property>
              <item>
               <widget class="NodeTypeListWidget" name="nodeTypeListWidget">
+               <property name="minimumSize">
+                <size>
+                 <width>256</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="lineWidth">
                 <number>0</number>
                </property>
-               <property name="viewMode">
-                <enum>QListView::ListMode</enum>
+               <property name="horizontalScrollBarPolicy">
+                <enum>Qt::ScrollBarAlwaysOff</enum>
+               </property>
+               <property name="resizeMode">
+                <enum>QListView::Adjust</enum>
                </property>
               </widget>
              </item>
@@ -240,6 +368,8 @@ color: rgb(255, 255, 255);</string>
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

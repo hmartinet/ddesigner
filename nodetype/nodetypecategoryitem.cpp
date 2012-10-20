@@ -2,22 +2,25 @@
 #include "nodetypecategoryitem.h"
 #include "nodetypecategoryitemconnector.h"
 
+#include <QDebug>
+#include <QStyledItemDelegate>
+
 NodeTypeCategoryItem::NodeTypeCategoryItem(QString label, QListWidget *parent) :
   QListWidgetItem(parent),
   hidden(false)
 {
-  parent->addItem(this);
-
   QPushButton *button = new QPushButton(label);
+  button->setObjectName("categoryButton");
+  button->setCheckable(true);
+  button->setFocusPolicy(Qt::NoFocus);
+  button->setMinimumHeight(20);
+  button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+
+  parent->setItemWidget(this, button);
+
+  setSizeHint(button->sizeHint());
+
   QObject::connect(button, SIGNAL(clicked()), new NodeTypeCategoryItemConnector(this), SLOT(toggleState()));
-  button->setMaximumHeight(18);
-  QHBoxLayout *layout= new QHBoxLayout();
-  layout->setContentsMargins(0,0,0,0);
-  layout->addWidget(button);
-  QWidget *widget = new QWidget();
-  widget->setLayout(layout);
-  this->setSizeHint(widget->sizeHint());
-  parent->setItemWidget(this, widget);
 }
 
 void NodeTypeCategoryItem::addNode(QListWidgetItem* nodeItem)

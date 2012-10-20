@@ -16,12 +16,9 @@ OBJECTS_DIR = .tmp/$$FOLDER
 RCC_DIR = .tmp/$$FOLDER
 UI_DIR = .tmp/$$FOLDER
 
-QMAKE_CXXFLAGS_WARN_ON = -Wall -Wno-parentheses
+OTHER_FILES += resources/style/ddesigner.css
 
-OTHER_FILES += \
-    resources/library/tango/computer-desktop/computer-hp-pavilion-t3700.svg \
-    resources/library/tango/computer-laptop/computer-laptop-lenovo-thinkpad-r61.svg \
-    resources/library/tango/descriptor.json
+QMAKE_CXXFLAGS_WARN_ON = -Wall -Wno-parentheses
 
 resources.path    = $$DESTDIR
 resources.files    = resources/*

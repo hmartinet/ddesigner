@@ -1,0 +1,61 @@
+QWidget#mainToolbar {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                                stop: 0 #442178, stop: 1 #7137c8);
+}
+
+QWidget#mainToolbar QToolButton {
+    padding: 2px;
+    background-color: transparent;
+    color: #ffffff;
+    border-style: none;
+    border-width: 0px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+QWidget#mainToolbar QToolButton:hover {
+    background-color: rgba(170, 135, 222, 32);
+}
+QWidget#mainToolbar QToolButton:checked {
+    background-color: rgba(170, 135, 222, 92);
+    border-top: 1px solid rgba(255, 255, 255, 128);
+    border-bottom: 1px solid rgba(255, 255, 255, 128);
+}
+
+QWidget#toolsWidget QToolButton {
+    padding: 2px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+QWidget#toolsWidget QToolButton:hover {
+    background-color: rgba(170, 135, 222, 32);
+}
+QWidget#toolsWidget QToolButton:checked {
+    background-color: rgba(170, 135, 222, 92);
+    border: 1px solid #7137c8;
+}
+
+QListWidget::item:selected {
+    background-color: #e3d7f4;
+    outline:none;
+    border: none;
+}
+
+QPushButton#categoryButton {
+    background-image: url(:/tools/arrow-3-down);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: #cccccc;
+    color: black;
+    border: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-left: 6px solid #cccccc;
+    font: bold;
+}
+
+QPushButton#categoryButton:checked {
+    background-image: url(:/tools/arrow-3-right);
+}
+
+

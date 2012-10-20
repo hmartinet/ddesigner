@@ -4,7 +4,8 @@
 NodeTypeListWidget::NodeTypeListWidget(QWidget *parent) :
   QListWidget(parent)
 {
-  this->setIconSize(QSize(48, 48));
+  setFocusPolicy(Qt::NoFocus);
+  this->setIconSize(QSize(32, 32));
 
   QJson::Parser parser;
   QFile file("library/tango/descriptor.json");
@@ -24,6 +25,8 @@ NodeTypeListWidget::NodeTypeListWidget(QWidget *parent) :
           categoryItem->addNode(new NodeTypeItem(type.value("label").toString(), filePath, this));
         }
     }
+//  resizeContents(width(), height());
+  update();
 }
 
 

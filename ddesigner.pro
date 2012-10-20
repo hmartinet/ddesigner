@@ -40,6 +40,10 @@ HEADERS  += mainwindow.h \
     diagram/addsvgnodeitemmode.h \
     nodetype/optionsstackedwidget.h \
     diagram/moveitemmode.h \
-    diagram/diagramscene.h
+    diagram/diagramscene.h \
+    noshiftproxystyle.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    icons.qrc
