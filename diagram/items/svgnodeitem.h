@@ -7,7 +7,7 @@
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
 #include <QVariant>
-#include "diagramview.h"
+#include "../diagramview.h"
 
 class SvgNodeItem : public QGraphicsSvgItem
 {

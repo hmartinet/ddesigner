@@ -210,13 +210,30 @@
          </property>
          <item>
           <widget class="QWidget" name="toolsWidget" native="true">
-           <layout class="QFormLayout" name="formLayout_4">
-            <property name="horizontalSpacing">
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="spacing">
              <number>0</number>
             </property>
-            <property name="verticalSpacing">
-             <number>0</number>
-            </property>
+            <item row="0" column="2">
+             <widget class="QToolButton" name="moveToolButton">
+              <property name="text">
+               <string>M</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons.qrc">
+                <normaloff>:/tools/move</normaloff>:/tools/move</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QToolButton" name="nodeToolButton">
               <property name="text">
@@ -237,14 +254,27 @@
               </property>
              </widget>
             </item>
+            <item row="0" column="4">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
             <item row="0" column="1">
-             <widget class="QToolButton" name="moveToolButton">
+             <widget class="QToolButton" name="linkToolButton">
               <property name="text">
-               <string>M</string>
+               <string>...</string>
               </property>
               <property name="icon">
                <iconset resource="icons.qrc">
-                <normaloff>:/tools/move</normaloff>:/tools/move</iconset>
+                <normaloff>:/tools/link</normaloff>:/tools/link</iconset>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -274,6 +304,9 @@
            </widget>
            <widget class="QWidget" name="nodeOptions">
             <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <property name="margin">
               <number>0</number>
              </property>
@@ -304,6 +337,9 @@
           </widget>
          </item>
         </layout>
+        <zorder>optionsWidget</zorder>
+        <zorder>nodeTypeListWidget</zorder>
+        <zorder>toolsWidget</zorder>
        </widget>
        <widget class="QWidget" name="gridPage">
         <layout class="QFormLayout" name="formLayout">

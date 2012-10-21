@@ -13,35 +13,42 @@ INCLUDEPATH += . ..
 
 SOURCES += mainwindow.cpp \
     main.cpp \
+    \
     nodetype/nodetypecategoryitem.cpp \
     nodetype/nodetypecategoryitemconnector.cpp \
     nodetype/nodetypelistwidget.cpp \
     nodetype/nodetypeitem.cpp \
-    diagram/svgnodeitem.cpp \
-    diagram/diagramview.cpp \
-    diagram/nodelabelitem.cpp \
-    diagram/noactionmode.cpp \
-    diagram/diagrammode.cpp \
-    diagram/addsvgnodeitemmode.cpp \
     nodetype/optionsstackedwidget.cpp \
-    diagram/moveitemmode.cpp \
-    diagram/diagramscene.cpp
+    \
+    diagram/diagramscene.cpp \
+    diagram/diagramview.cpp \
+    \
+    diagram/items/nodelabelitem.cpp \
+    diagram/items/svgnodeitem.cpp \
+    \
+    diagram/modes/noactionmode.cpp \
+    diagram/modes/diagrammode.cpp \
+    diagram/modes/addsvgnodeitemmode.cpp \
+    diagram/modes/moveitemmode.cpp
 
 HEADERS  += mainwindow.h \
+    \
     nodetype/nodetypecategoryitem.h \
     nodetype/nodetypecategoryitemconnector.h \
     nodetype/nodetypelistwidget.h \
     nodetype/nodetypeitem.h \
-    diagram/svgnodeitem.h \
-    diagram/diagramview.h \
-    diagram/nodelabelitem.h \
-    diagram/noactionmode.h \
-    diagram/diagrammode.h \
-    diagram/addsvgnodeitemmode.h \
     nodetype/optionsstackedwidget.h \
-    diagram/moveitemmode.h \
+    \
     diagram/diagramscene.h \
-    noshiftproxystyle.h
+    diagram/diagramview.h \
+    \
+    diagram/items/nodelabelitem.h \
+    diagram/items/svgnodeitem.h \
+    \
+    diagram/modes/noactionmode.h \
+    diagram/modes/diagrammode.h \
+    diagram/modes/addsvgnodeitemmode.h \
+    diagram/modes/moveitemmode.h
 
 FORMS    += mainwindow.ui
 

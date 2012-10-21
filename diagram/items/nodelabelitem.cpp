@@ -1,7 +1,7 @@
 #include "nodelabelitem.h"
 #include <QTextBlockFormat>
 #include <QTextCursor>
-#include "diagramview.h"
+#include "../diagramview.h"
 
 NodeLabelItem::NodeLabelItem(const QString& text, QGraphicsItem* parent) :
   QGraphicsTextItem(text, parent)

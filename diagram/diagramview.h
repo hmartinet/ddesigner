@@ -29,7 +29,7 @@
 #include <QMouseEvent>
 #include <QListWidgetItem>
 #include <QPointF>
-#include "diagrammode.h"
+#include "modes/diagrammode.h"
 #include "diagramscene.h"
 
 class DiagramView : public QGraphicsView

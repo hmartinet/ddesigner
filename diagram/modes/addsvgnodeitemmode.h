@@ -4,8 +4,8 @@
 #include <QGraphicsView>
 #include <QSvgRenderer>
 #include "diagrammode.h"
-#include "diagramview.h"
-#include "svgnodeitem.h"
+#include "../diagramview.h"
+#include "../items/svgnodeitem.h"
 
 class AddSvgNodeItemMode : public DiagramMode
 {

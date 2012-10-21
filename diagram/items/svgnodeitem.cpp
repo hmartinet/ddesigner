@@ -1,7 +1,7 @@
 
 #include <QPainter>
 #include <QStyle>
-#include "diagramview.h"
+#include "../diagramview.h"
 #include "svgnodeitem.h"
 #include "nodelabelitem.h"
 

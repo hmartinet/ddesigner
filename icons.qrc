@@ -12,5 +12,6 @@
         <file alias="node">resources/icons/tools/node.png</file>
         <file alias="arrow-3-down">resources/icons/tools/arrow-3-down.png</file>
         <file alias="arrow-3-right">resources/icons/tools/arrow-3-right.png</file>
+        <file alias="link">resources/icons/tools/link.png</file>
     </qresource>
 </RCC>

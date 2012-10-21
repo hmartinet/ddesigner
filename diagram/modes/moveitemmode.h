@@ -4,7 +4,7 @@
 #include <QMouseEvent>
 #include <QGraphicsItem>
 #include "diagrammode.h"
-#include "diagramview.h"
+#include "../diagramview.h"
 
 class MoveItemMode: public DiagramMode
 {

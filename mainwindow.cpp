@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->nodeTypeListWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->diagramView, SLOT(createAction(QListWidgetItem*)));
     QObject::connect(ui->nodeToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showNodeOptions()));
 
-    QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setSelectionMode()));
+//    QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setSelectionMode()));
     QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showSelectionOptions()));
 
     QObject::connect(ui->gridCheckBox, SIGNAL(toggled(bool)), ui->diagramView, SLOT(setDisplayGrid(bool)));

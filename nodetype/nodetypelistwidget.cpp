@@ -25,7 +25,6 @@ NodeTypeListWidget::NodeTypeListWidget(QWidget *parent) :
           categoryItem->addNode(new NodeTypeItem(type.value("label").toString(), filePath, this));
         }
     }
-//  resizeContents(width(), height());
   update();
 }
 

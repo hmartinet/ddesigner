@@ -3,7 +3,7 @@
 
 #include <QMouseEvent>
 #include "diagrammode.h"
-#include "diagramview.h"
+#include "../diagramview.h"
 
 class NoActionMode : public DiagramMode
 {

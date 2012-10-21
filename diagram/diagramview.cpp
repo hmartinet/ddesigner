@@ -21,9 +21,9 @@
 
 #include <QDebug>
 #include "diagramview.h"
-#include "noactionmode.h"
-#include "moveitemmode.h"
-#include "addsvgnodeitemmode.h"
+#include "modes/noactionmode.h"
+#include "modes/moveitemmode.h"
+#include "modes/addsvgnodeitemmode.h"
 #include "diagramscene.h"
 
 DiagramView::DiagramView(QWidget *parent) :
