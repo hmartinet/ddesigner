@@ -3,21 +3,31 @@
 
 #include <QGraphicsScene>
 #include <QPointF>
+#include <QList>
+#include "diagram/items/nodeitem.h"
 
 class DiagramScene : public QGraphicsScene
 {
 public:
-  DiagramScene(QObject* parent);
+    DiagramScene(QObject* parent);
 
-  void setDisplayGrid(bool displayGrid);
+    void addNodeItem(NodeItem* nodeItem);
+    void removeNodeItem(NodeItem* nodeItem);
 
-  QPointF nearestValid(QPointF point);
+    bool displayGrid();
+    void setDisplayGrid(bool displayGrid);
+    void setShowAnchors(bool showAnchors);
+
+    QPointF nearestValid(QPointF point);
 
 protected:
-  void drawBackground(QPainter* painter, const QRectF& rect);
+    QList<NodeItem*> nodeItemList();
+
+    void drawBackground(QPainter* painter, const QRectF& rect);
 
 private:
-  bool displayGrid;
+    bool _displayGrid;
+    QList<NodeItem*> _nodeItemList;
 };
 
 #endif // DIAGRAMSCENE_H

@@ -311,6 +311,65 @@
               <number>0</number>
              </property>
              <item>
+              <widget class="QWidget" name="widget" native="true">
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="labelPositionLabel">
+                  <property name="text">
+                   <string>Label position</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="labelPositionComboBox">
+                  <property name="currentIndex">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Top</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/tools/arrow-3-up</normaloff>:/tools/arrow-3-up</iconset>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Right</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/tools/arrow-3-right</normaloff>:/tools/arrow-3-right</iconset>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Bottom</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/tools/arrow-3-down</normaloff>:/tools/arrow-3-down</iconset>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Left</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/tools/arrow-3-left</normaloff>:/tools/arrow-3-left</iconset>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="searchLineEdit"/>
+             </item>
+             <item>
               <widget class="NodeTypeListWidget" name="nodeTypeListWidget">
                <property name="minimumSize">
                 <size>
@@ -338,7 +397,6 @@
          </item>
         </layout>
         <zorder>optionsWidget</zorder>
-        <zorder>nodeTypeListWidget</zorder>
         <zorder>toolsWidget</zorder>
        </widget>
        <widget class="QWidget" name="gridPage">

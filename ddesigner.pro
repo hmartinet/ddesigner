@@ -11,6 +11,31 @@ include(ddesigner.pri)
 
 INCLUDEPATH += . ..
 
+HEADERS  += mainwindow.h \
+    \
+    nodetype/nodetypecategoryitem.h \
+    nodetype/nodetypecategoryitemconnector.h \
+    nodetype/nodetypelistwidget.h \
+    nodetype/nodetypeitem.h \
+    nodetype/optionsstackedwidget.h \
+    \
+    diagram/diagramscene.h \
+    diagram/diagramview.h \
+    diagram/fourdirection.h \
+    \
+    diagram/items/nodelabelitem.h \
+    diagram/items/linkitem.h \
+    diagram/items/nodesvgitem.h \
+    \
+    diagram/modes/noactionmode.h \
+    diagram/modes/diagrammode.h \
+    diagram/modes/moveitemmode.h \
+    diagram/modes/linkmode.h \
+    diagram/modes/addnodesvgitemmode.h \
+    diagram/items/nodeitem.h \
+    diagram/items/linkanchor.h \
+    diagram/itemdata.h
+
 SOURCES += mainwindow.cpp \
     main.cpp \
     \
@@ -24,31 +49,16 @@ SOURCES += mainwindow.cpp \
     diagram/diagramview.cpp \
     \
     diagram/items/nodelabelitem.cpp \
-    diagram/items/svgnodeitem.cpp \
+    diagram/items/linkitem.cpp \
+    diagram/items/nodesvgitem.cpp \
     \
     diagram/modes/noactionmode.cpp \
     diagram/modes/diagrammode.cpp \
-    diagram/modes/addsvgnodeitemmode.cpp \
-    diagram/modes/moveitemmode.cpp
-
-HEADERS  += mainwindow.h \
-    \
-    nodetype/nodetypecategoryitem.h \
-    nodetype/nodetypecategoryitemconnector.h \
-    nodetype/nodetypelistwidget.h \
-    nodetype/nodetypeitem.h \
-    nodetype/optionsstackedwidget.h \
-    \
-    diagram/diagramscene.h \
-    diagram/diagramview.h \
-    \
-    diagram/items/nodelabelitem.h \
-    diagram/items/svgnodeitem.h \
-    \
-    diagram/modes/noactionmode.h \
-    diagram/modes/diagrammode.h \
-    diagram/modes/addsvgnodeitemmode.h \
-    diagram/modes/moveitemmode.h
+    diagram/modes/moveitemmode.cpp \
+    diagram/modes/linkmode.cpp \
+    diagram/modes/addnodesvgitemmode.cpp \
+    diagram/items/nodeitem.cpp \
+    diagram/items/linkanchor.cpp
 
 FORMS    += mainwindow.ui
 

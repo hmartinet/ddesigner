@@ -11,7 +11,6 @@ class MoveItemMode: public DiagramMode
 public:
   MoveItemMode(DiagramView* view);
 
-  void paintSelection(QGraphicsItem* item, QPainter* painter);
   bool mouseMoveEvent(QMouseEvent* e);
   bool mousePressEvent(QMouseEvent* e);
 };

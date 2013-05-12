@@ -6,17 +6,20 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QSize>
+#include "nodetypeitem.h"
 
 class NodeTypeCategoryItem : public QListWidgetItem
 {
 public:
   explicit NodeTypeCategoryItem(QString label, QListWidget *parent = 0);
-  void addNode(QListWidgetItem* nodeItem);
+  void addNode(NodeTypeItem* nodeItem);
   void toggleState();
+  void applyFilter(QString filter);
 
 private:
   bool hidden;
-  QList<QListWidgetItem*> nodeItemList;
+  QString filter;
+  QList<NodeTypeItem*> nodeItemList;
 };
 
 #endif // NODETYPECATEGORYITEM_H

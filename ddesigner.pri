@@ -9,6 +9,7 @@ CONFIG(debug, debug|release) {
       QMAKE_LFLAGS_RELEASE -= -Wl,-s
    }
 }
+QMAKE_CXXFLAGS += -std=c++0x
 
 DESTDIR = output/$$FOLDER
 MOC_DIR = .tmp/$$FOLDER

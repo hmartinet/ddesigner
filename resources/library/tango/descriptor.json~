@@ -1,0 +1,365 @@
+{
+    "name":"tango",
+    "label":"Tango",
+    "categories":[
+        {
+            "name":"bluetooth-adapter",
+            "label":"Bluetooth Adapter",
+            "types":[
+                {
+                    "name":"linksys-USBBT100",
+                    "label":"Linksys USBBT100 Bluetooth Adapter",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"computer-desktop",
+            "label":"Desktop Computer",
+            "types":[
+                {
+                    "name":"amstrad-cpc-464",
+                    "label":"Amstrad CPC 464",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-imac-g3",
+                    "label":"Apple iMac G3",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-imac-g4",
+                    "label":"Apple iMac G4",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-imac-g5",
+                    "label":"Apple iMac G5",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-imac-intel",
+                    "label":"Apple iMac Intel",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-lisa",
+                    "label":"Apple Lisa",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-macintosh-512",
+                    "label":"Apple Macintosh 512",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"atari-1024ST",
+                    "label":"Atari 1024 ST",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"compaq-presario-sr2100",
+                    "label":"Compaq Presario SR2100",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"dell-dimension-E521",
+                    "label":"Dell Dimension E521",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"hp-pavilion-t3700",
+                    "label":"HP Pavilion T3700",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"ibm-pc-5150",
+                    "label":"IBM PC 5150",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"next-station",
+                    "label":"NeXT Station",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"next-station-color",
+                    "label":"NeXT Station Color",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"packard-bell-imedia",
+                    "label":"Packard-Bell iMedia",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"sinclair-zx-spectrum",
+                    "label":"Sinclair ZX Spectrum",
+                    "imageType":"svg"
+                }
+            ]                               
+        },
+        {
+            "name":"computer-laptop",
+            "label":"Laptop Computer",
+            "types":[
+                {
+                    "name":"apple-powerbook-g4",
+                    "label":"Apple PowerBook G4",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"dell-inspiron",
+                    "label":"DELL Inspiron",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"lenovo-thinkpad-r61",
+                    "label":"Lenovo Thinkpad R61",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"lenovo-thinkpad-x41",
+                    "label":"Lenovo Thinkpad X41",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"sony-vaio-tx",
+                    "label":"Sony VAIO TX Series",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"computer-mini",
+            "label":"Mini Computer",
+            "types":[
+                {
+                    "name":"apple-mac-mini",
+                    "label":"Apple Mac Mini",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-tv",
+                    "label":"Apple TV",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"shuttle",
+                    "label":"Shuttle Mini PC",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"terratec-noxon-2",
+                    "label":"Terratec Noxon 2",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"external-hard-drive",
+            "label":"External Hard Drive",
+            "types":[
+                {
+                    "name":"western-digital-mybook-essential",
+                    "label":"Western Digital MyBook Essential",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"western-digital-mybook-pro",
+                    "label":"Western Digital MyBook Pro",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"monitor",
+            "label":"Monitor",
+            "types":[
+                {
+                    "name":"dell-utrasharp",
+                    "label":"Dell UltraSharp Display",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"apple-cinema",
+                    "label":"Apple Cinema Display",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"network-access-point",
+            "label":"Network Access Point",
+            "types":[
+                {
+                    "name":"network-access-point-freebox",
+                    "label":"FreeBox Access Point",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"network-access-point-livebox",
+                    "label":"Livebox Access Point",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"network-access-point-neufbox",
+                    "label":"NeufBox Access Point",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"network-hub",
+            "label":"Hub",
+            "types":[
+                {
+                    "name":"hub",
+                    "label":"Hub",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"network-print-server",
+            "label":"Print Server",
+            "types":[
+                {
+                    "name":"linksys-wireless-g-printserver",
+                    "label":"Linksys Wireless G Print Server",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"network-router",
+            "label":"Router",
+            "types":[
+                {
+                    "name":"linksys-WRT54G",
+                    "label":"Linksys WRT45G Wireless Router",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"network-switch",
+            "label":"Switch",
+            "types":[
+                {
+                    "name":"linksys-EZXS55W",
+                    "label":"Linksys EZXS55W Switch",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"printer",
+            "label":"Printer",
+            "types":[
+                {
+                    "name":"epson-aculaser-c1100",
+                    "label":"Epson AcuLaser C1100",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"remote",
+            "label":"Remote",
+            "types":[
+                {
+                    "name":"apple-remote",
+                    "label":"Apple Remote",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"logitech-harmony-1000",
+                    "label":"Logitech Harmony 1000",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"scanner",
+            "label":"Scanner",
+            "types":[
+                {
+                    "name":"scanner-epson-perfection-1260",
+                    "label":"Epson Perfection 1260",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"server-service",
+            "label":"Server Service",
+            "types":[
+                {
+                    "name":"asterisk",
+                    "label":"Asterisk",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"hal",
+                    "label":"HAL",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"mysql",
+                    "label":"MySQL",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"postgresql",
+                    "label":"PostreSQL",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"ssh",
+                    "label":"SSH",
+                    "imageType":"svg"
+                },
+                {
+                    "name":"tomcat",
+                    "label":"Tomcat",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"storage-key",
+            "label":"Storage Key",
+            "types":[
+                {
+                    "name":"verbatim-store-n-go",
+                    "label":"Verbatim Store'n'Go",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"webcam",
+            "label":"Webcam",
+            "types":[
+                {
+                    "name":"apple-isight",
+                    "label":"Apple iSight",
+                    "imageType":"svg"
+                }
+            ]
+        },
+        {
+            "name":"wireless-adapter",
+            "label":"Wireless Adapter",
+            "types":[
+                {
+                    "name":"usb-wifi",
+                    "label":"USB WiFi Adapter",
+                    "imageType":"svg"
+                }
+            ]
+        }
+
+    ]
+}

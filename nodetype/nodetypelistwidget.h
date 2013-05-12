@@ -13,11 +13,16 @@
 
 class NodeTypeListWidget : public QListWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit NodeTypeListWidget(QWidget *parent = 0);
-  
+    explicit NodeTypeListWidget(QWidget *parent = 0);
+    void applyFilter(QString filter);
+
+private:
+    QList<NodeTypeCategoryItem*> nodeLibrary;
+    QString filter;
+
 };
 
 #endif // NODETYPELISTWIDGET_H

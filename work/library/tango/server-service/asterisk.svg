@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/home/bellaich/Desktop"
+   sodipodi:docname="asterisk.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0"
+   inkscape:export-filename="/home/bellaich/Desktop/asterisk.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <filter
+       inkscape:collect="always"
+       x="-0.062487047"
+       width="1.1249741"
+       y="-1.5075001"
+       height="4.0150001"
+       id="filter3670">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.1671637"
+         id="feGaussianBlur3672" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.6106175"
+     inkscape:cx="40.085378"
+     inkscape:cy="16.509529"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1270"
+     inkscape:window-height="943"
+     inkscape:window-x="986"
+     inkscape:window-y="258"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     width="48px"
+     height="48px"
+     showgrid="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Asterk</dc:title>
+        <dc:date>Aug 2007</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>F.Bellaiche &lt;frederic.bellaiche@gmail.com&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/Notice" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/ShareAlike" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/SourceCode" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.6;fill:#2e3436;fill-opacity:0.75;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter3670)"
+       id="path3668"
+       sodipodi:cx="23.691681"
+       sodipodi:cy="43.935249"
+       sodipodi:rx="22.414188"
+       sodipodi:ry="0.92908549"
+       d="M 46.105869 43.935249 A 22.414188 0.92908549 0 1 1  1.2774925,43.935249 A 22.414188 0.92908549 0 1 1  46.105869 43.935249 z"
+       transform="matrix(1.0223073,0,0,1.0763275,-0.3059899,-4.2887173)" />
+    <path
+       style="fill:#f57900;fill-rule:evenodd;stroke:#a94b00;stroke-width:0.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 28.514465,6.5078322 C 21.609718,6.6917284 13.292477,10.166563 6.1968978,19.766199 L 8.7492558,13.031791 C -11.547293,35.775054 15.447442,47.542498 32.592013,38.376016 L 41.587518,40.540647 C 41.707272,40.566988 38.913095,36.033482 38.007992,34.317332 C 41.766172,31.625754 54.701706,14.266446 38.661645,6.7483469 C 41.764003,8.7559104 41.773925,10.989654 42.365676,12.941597 C 40.910545,9.4046089 35.419214,6.3239362 28.514465,6.5078322 z M 29.417129,8.9430425 C 34.656139,8.9584744 39.137408,11.062695 41.245129,15.0461 C 44.186056,20.604177 41.559443,28.02696 35.300003,33.235016 L 37.447718,37.534215 L 31.378087,35.910741 C 31.232933,35.99227 31.08986,36.071954 30.942319,36.151256 C 21.684776,41.127282 11.396446,39.733466 7.8465926,33.024566 C 4.2967394,26.315669 8.891859,16.895437 18.149403,11.91941 C 21.910284,9.8978992 25.832548,8.9324817 29.417129,8.9430425 z "
+       id="path2968" />
+    <path
+       style="fill:#f57900;fill-rule:evenodd;stroke:#a94b00;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 23.237227,20.355848 L 22.482345,13.503727 L 27.151716,13.499999 L 26.902883,20.181644 L 32.796931,16.720947 L 35.007201,20.421377 L 29.113152,23.882065 L 35.500001,27.342756 L 32.923791,31.15918 L 26.902883,27.69849 L 27.447907,34.558067 L 22.412588,34.554338 L 23.121091,27.65162 L 16.95911,31.279049 L 14.621981,27.222892 L 20.394055,24.237802 L 14.5,20.777112 L 16.95911,16.960688 L 23.237227,20.355848 z "
+       id="path2966"
+       sodipodi:nodetypes="ccccccccccccccccccc" />
+    <path
+       id="path3666"
+       d="M 24.117095,22.002896 L 23.478349,14.410275 L 26.166453,14.487153 L 25.848272,22.002896 L 32.492238,17.973485 L 33.706233,20.165177 L 26.946131,23.90424 L 34.222508,27.701373 L 32.71138,29.929181 L 25.790204,26.015913 L 26.497773,33.570913 L 23.338327,33.473587 L 24.233231,25.959493 L 17.251607,30.084579 L 15.992674,27.487912 L 22.653735,24.193088 L 15.83556,20.570159 L 17.251607,18.11008 L 24.117095,22.002896 z "
+       style="opacity:0.35769228;fill:none;fill-rule:evenodd;stroke:#eeeeec;stroke-width:0.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="ccccccccccccccccccc" />
+  </g>
+</svg>

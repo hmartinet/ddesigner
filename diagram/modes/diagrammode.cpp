@@ -1,8 +1,8 @@
 #include <QDebug>
 #include "diagrammode.h"
 
-DiagramMode::DiagramMode(DiagramView *view):
-  view(view)
+DiagramMode::DiagramMode(DiagramView *diagramView):
+  _diagramView(diagramView)
 {
 }
 

@@ -10,3 +10,14 @@ NodeTypeItem::NodeTypeItem(QString label, QString filePath, QListWidget *parent)
   setData(Qt::UserRole + 2, filePath);
 }
 
+bool NodeTypeItem::applyFilter(QString filter, bool categoryHidden)
+{
+    if (text().contains(filter, Qt::CaseInsensitive)) {
+        setHidden(categoryHidden);
+        return true;
+    } else {
+        setHidden(true);
+        return false;
+    }
+}
+

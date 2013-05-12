@@ -1,19 +1,40 @@
 #include "nodelabelitem.h"
-#include <QTextBlockFormat>
-#include <QTextCursor>
-#include "../diagramview.h"
 
-NodeLabelItem::NodeLabelItem(const QString& text, QGraphicsItem* parent) :
-  QGraphicsTextItem(text, parent)
+NodeLabelItem::NodeLabelItem(QGraphicsItem* parentNode,
+                             const QString& text) :
+    QGraphicsTextItem(text, parentNode),
+    parentNode(parentNode)
 {
-  this->setTextWidth(100);
-  QTextBlockFormat format;
-  format.setAlignment(Qt::AlignCenter);
-  QTextCursor cursor = this->textCursor();
-  cursor.select(QTextCursor::Document);
-  cursor.mergeBlockFormat(format);
-  cursor.clearSelection();
-  this->setTextCursor(cursor);
-  this->setPos(QPointF((parent->boundingRect().width() - this->boundingRect().width()) / 2 - DiagramView::SELECTION_OFFSET,
-                       parent->boundingRect().height() - DiagramView::SELECTION_OFFSET));
+    setTextWidth(100);
 }
+
+void NodeLabelItem::setPosition(Qt::Alignment alignment, QPointF position)
+{
+    align(alignment);
+    setPos(position);
+}
+
+QGraphicsItem* NodeLabelItem::getParentNode()
+{
+    return parentNode;
+}
+
+QRectF NodeLabelItem::idealBoundingRect() const
+{
+    return QRectF(pos().x() + (boundingRect().width() - document()->idealWidth()) / 2,
+                  pos().y(),
+                  document()->idealWidth(),
+                  boundingRect().height());
+}
+
+void NodeLabelItem::align(Qt::Alignment alignment)
+{
+    QTextBlockFormat format;
+    format.setAlignment(alignment);
+    QTextCursor cursor = textCursor();
+    cursor.select(QTextCursor::Document);
+    cursor.mergeBlockFormat(format);
+    cursor.clearSelection();
+    setTextCursor(cursor);
+}
+

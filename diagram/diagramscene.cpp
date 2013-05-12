@@ -21,26 +21,57 @@ inline qreal round(qreal val, int step)
 DiagramScene::DiagramScene(QObject* parent) :
     QGraphicsScene(parent)
 {
+    _nodeItemList = QList<NodeItem *>();
+}
+
+void DiagramScene::addNodeItem(NodeItem* nodeItem)
+{
+    addItem(nodeItem->graphicsItem());
+    _nodeItemList.append(nodeItem);
+}
+
+void DiagramScene::removeNodeItem(NodeItem *nodeItem)
+{
+    removeItem(nodeItem->graphicsItem());
+    _nodeItemList.removeOne(nodeItem);
+}
+
+bool DiagramScene::displayGrid()
+{
+    return _displayGrid;
 }
 
 void DiagramScene::setDisplayGrid(bool displayGrid)
 {
-    this->displayGrid = displayGrid;
+    _displayGrid = displayGrid;
     update();
+}
+
+void DiagramScene::setShowAnchors(bool showAnchors)
+{
+    for (NodeItem* item : _nodeItemList)
+    {
+        item->setShowAnchors(showAnchors);
+    }
 }
 
 QPointF DiagramScene::nearestValid(QPointF point)
 {
-    if (!displayGrid)
+    if (!displayGrid())
     {
         return point;
     }
     return QPointF(round(point.x(), GRID_STEP), round(point.y(), GRID_STEP));
 }
 
+QList<NodeItem *> DiagramScene::nodeItemList()
+{
+    return _nodeItemList;
+}
+
 void DiagramScene::drawBackground(QPainter* painter, const QRectF& rect)
 {
-    if (displayGrid)
+    if (displayGrid())
     {
         int step = GRID_STEP;
         painter->setPen(QPen(QColor(200, 200, 255, 125)));

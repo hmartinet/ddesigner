@@ -23,97 +23,137 @@
 #include "diagramview.h"
 #include "modes/noactionmode.h"
 #include "modes/moveitemmode.h"
-#include "modes/addsvgnodeitemmode.h"
+#include "modes/addnodesvgitemmode.h"
+#include "modes/linkmode.h"
 #include "diagramscene.h"
 
 DiagramView::DiagramView(QWidget *parent) :
-  QGraphicsView(parent),
-  mode(new NoActionMode(this))
+    QGraphicsView(parent),
+    _mode(new NoActionMode(this))
 {
-  setScene(diagramScene = new DiagramScene(this));
-  scene()->setSceneRect(0,0,1,1);
+    setScene(_diagramScene = new DiagramScene(this));
+    diagramScene()->setSceneRect(0,0,1,1);
 }
 
 void DiagramView::mousePressEvent(QMouseEvent* e)
 {
-  if (!this->mode->mousePressEvent(e))
+    if (!mode()->mousePressEvent(e))
     {
-      QGraphicsView::mousePressEvent(e);
-  }
+        QGraphicsView::mousePressEvent(e);
+    }
 }
 
 void DiagramView::mouseMoveEvent(QMouseEvent* e)
 {
-  if (!this->mode->mouseMoveEvent(e))
+    if (!mode()->mouseMoveEvent(e))
     {
-      QGraphicsView::mouseMoveEvent(e);
-  }
+        QGraphicsView::mouseMoveEvent(e);
+    }
 }
 
 void DiagramView::enterEvent(QEvent *e)
 {
-  if (!this->mode->enterEvent(e))
+    if (!mode()->enterEvent(e))
     {
-      QGraphicsView::enterEvent(e);
-  }
+        QGraphicsView::enterEvent(e);
+    }
 }
 
 void DiagramView::leaveEvent(QEvent *e)
 {
-  if (!this->mode->leaveEvent(e))
+    if (!mode()->leaveEvent(e))
     {
-      QGraphicsView::leaveEvent(e);
-  }
+        QGraphicsView::leaveEvent(e);
+    }
+}
+
+void DiagramView::setDefaultLabelPosition(int labelPositionIndex)
+{
+    _defaultLabelPosition = FourDirection(labelPositionIndex);
 }
 
 QSvgRenderer* DiagramView::getSvgRenderer(QString filePath)
 {
-  if (!svgRendererPool.contains(filePath))
+    if (!_svgRendererPool.contains(filePath))
     {
-      svgRendererPool.insert(filePath, new QSvgRenderer(filePath));
+        QSvgRenderer* renderer = new QSvgRenderer(filePath);
+        renderer->setViewBox(renderer->viewBox().adjusted(
+                                 -NodeItem::OFFSET, -NodeItem::OFFSET,
+                                 NodeItem::OFFSET, NodeItem::OFFSET));
+        _svgRendererPool.insert(filePath, renderer);
     }
-  return svgRendererPool.value(filePath);
+    return _svgRendererPool.value(filePath);
 }
 
-DiagramMode *DiagramView::getMode()
+DiagramMode *DiagramView::mode()
 {
-  return this->mode;
+    return _mode;
+}
+
+FourDirection DiagramView::defaultLabelPosition()
+{
+    return _defaultLabelPosition;
 }
 
 QPointF DiagramView::snapToGrid(const QPointF &point) const
 {
-  return diagramScene->nearestValid(point);
+    return _diagramScene->nearestValid(point);
 }
 
 QPointF DiagramView::mapToScene(const QPoint &point) const
 {
-  return diagramScene->nearestValid(QGraphicsView::mapToScene(point));
+    return _diagramScene->nearestValid(QGraphicsView::mapToScene(point));
 }
 
-void DiagramView::createAction(QListWidgetItem *item)
+void DiagramView::addItem(NodeItem *item)
 {
-  QString type = item->data(Qt::UserRole).toString();
+    diagramScene()->addNodeItem(item);
+}
 
-  if (type == "svg")
-    {
-      QString label = item->data(Qt::UserRole + 1).toString();
-      QString filePath = item->data(Qt::UserRole + 2).toString();
+void DiagramView::removeItem(NodeItem *item)
+{
+    diagramScene()->removeNodeItem(item);
+}
 
-      delete this->mode;
-      this->mode = new AddSvgNodeItemMode(this,
-                                          this->getSvgRenderer(filePath),
-                                          label);
-  }
+QGraphicsItem *DiagramView::itemAt(const QPointF &pos)
+{
+    return scene()->itemAt(pos);
+}
+
+DiagramScene *DiagramView::diagramScene()
+{
+    return _diagramScene;
+}
+
+void DiagramView::setAddNodeMode(QListWidgetItem *item)
+{
+    QString type = item->data(Qt::UserRole).toString();
+
+    if (type == "svg") {
+        QString label = item->data(Qt::UserRole + 1).toString();
+        QString filePath = item->data(Qt::UserRole + 2).toString();
+
+        delete _mode;
+        _mode = new AddNodeSvgItemMode(this,
+                                            this->getSvgRenderer(filePath),
+                                            label);
+    }
 }
 
 void DiagramView::setSelectionMode()
 {
-  delete this->mode;
-  this->mode = new MoveItemMode(this);
+    delete _mode;
+    _mode = new MoveItemMode(this);
+}
+
+void DiagramView::setLinkMode()
+{
+    delete _mode;
+    _mode = new LinkMode(this);
 }
 
 void DiagramView::setDisplayGrid(bool displayGrid)
 {
-  diagramScene->setDisplayGrid(displayGrid);
+    diagramScene()->setDisplayGrid(displayGrid);
 }
 

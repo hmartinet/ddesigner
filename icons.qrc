@@ -13,5 +13,9 @@
         <file alias="arrow-3-down">resources/icons/tools/arrow-3-down.png</file>
         <file alias="arrow-3-right">resources/icons/tools/arrow-3-right.png</file>
         <file alias="link">resources/icons/tools/link.png</file>
+        <file alias="arrow-3-left">resources/icons/tools/arrow-3-left.png</file>
+        <file alias="arrow-3-up">resources/icons/tools/arrow-3-up.png</file>
+        <file alias="search">resources/icons/tools/search.png</file>
+        <file alias="search-grey">resources/icons/tools/search-grey.png</file>
     </qresource>
 </RCC>

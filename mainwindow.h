@@ -23,26 +23,30 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "diagram/items/nodelabelitem.h"
+#include "diagram/fourdirection.h"
 
 namespace Ui {
-  class MainWindow;
+class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
-  Q_OBJECT
-  
+    Q_OBJECT
+
 public:
-  explicit MainWindow(QWidget *parent = 0);
-  ~MainWindow();
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
 private slots:
-  void on_fileToolButton_clicked();
-  void on_editToolButton_clicked();
-  void on_gridToolButton_clicked();
+    void on_fileToolButton_clicked();
+    void on_editToolButton_clicked();
+    void on_gridToolButton_clicked();
+
+    void on_searchLineEdit_textChanged(const QString &arg1);
 
 private:
-  Ui::MainWindow *ui;
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H

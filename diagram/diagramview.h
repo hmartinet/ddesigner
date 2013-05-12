@@ -29,40 +29,50 @@
 #include <QMouseEvent>
 #include <QListWidgetItem>
 #include <QPointF>
-#include "modes/diagrammode.h"
 #include "diagramscene.h"
+#include "modes/diagrammode.h"
+#include "fourdirection.h"
 
 class DiagramView : public QGraphicsView
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  static const int SELECTION_OFFSET = 4;
+    explicit DiagramView(QWidget* parent = 0);
 
-  explicit DiagramView(QWidget* parent = 0);
+    QSvgRenderer* getSvgRenderer(QString filePath);
+    DiagramMode* mode();
+    FourDirection defaultLabelPosition();
 
-  QSvgRenderer* getSvgRenderer(QString filePath);
-  DiagramMode* getMode();
+    QPointF snapToGrid(const QPointF &point) const;
+    QPointF mapToScene(const QPoint &point) const;
 
-  QPointF snapToGrid(const QPointF &point) const;
-  QPointF mapToScene(const QPoint &point) const;
+    void addItem(NodeItem* item);
+    void removeItem(NodeItem* item);
+    QGraphicsItem* itemAt(const QPointF &pos);
+
+    DiagramScene* diagramScene();
 
 protected:
-  void mousePressEvent(QMouseEvent* e);
-  void mouseMoveEvent(QMouseEvent* e);
-  void enterEvent(QEvent* e);
-  void leaveEvent(QEvent* e);
+    void mousePressEvent(QMouseEvent* e);
+    void mouseMoveEvent(QMouseEvent* e);
+    void enterEvent(QEvent* e);
+    void leaveEvent(QEvent* e);
 
 private:
-  DiagramScene* diagramScene;
-  DiagramMode* mode;
+    DiagramScene* _diagramScene;
+    DiagramMode* _mode;
 
-  QMap<QString, QSvgRenderer*> svgRendererPool;
+    FourDirection _defaultLabelPosition;
+
+    QMap<QString, QSvgRenderer*> _svgRendererPool;
 
 public slots:
-  void createAction(QListWidgetItem *item);
-  void setSelectionMode();
-  void setDisplayGrid(bool displayGrid);
+    void setDefaultLabelPosition(int labelPositionIndex);
+    void setAddNodeMode(QListWidgetItem *item);
+    void setSelectionMode();
+    void setLinkMode();
+    void setDisplayGrid(bool displayGrid);
 };
 
 #endif // DIAGRAMVIEW_H

@@ -47,11 +47,17 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << "Style file not load !";
     }
 
-    QObject::connect(ui->nodeTypeListWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->diagramView, SLOT(createAction(QListWidgetItem*)));
+    QObject::connect(ui->labelPositionComboBox, SIGNAL(currentIndexChanged(int)), ui->diagramView, SLOT(setDefaultLabelPosition(int)));
+    ui->diagramView->setDefaultLabelPosition(ui->labelPositionComboBox->currentIndex());
+    QObject::connect(ui->nodeTypeListWidget, SIGNAL(itemClicked(QListWidgetItem*)), ui->diagramView, SLOT(setAddNodeMode(QListWidgetItem*)));
+    QObject::connect(ui->nodeToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setSelectionMode()));
     QObject::connect(ui->nodeToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showNodeOptions()));
 
-//    QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setSelectionMode()));
+    QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setSelectionMode()));
     QObject::connect(ui->moveToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showSelectionOptions()));
+
+    QObject::connect(ui->linkToolButton, SIGNAL(clicked()), ui->diagramView, SLOT(setLinkMode()));
+    QObject::connect(ui->linkToolButton, SIGNAL(clicked()), ui->optionsWidget, SLOT(showSelectionOptions()));
 
     QObject::connect(ui->gridCheckBox, SIGNAL(toggled(bool)), ui->diagramView, SLOT(setDisplayGrid(bool)));
     ui->diagramView->setDisplayGrid(ui->gridCheckBox->isChecked());
@@ -80,4 +86,9 @@ void MainWindow::on_editToolButton_clicked()
 void MainWindow::on_gridToolButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_searchLineEdit_textChanged(const QString &arg1)
+{
+    ui->nodeTypeListWidget->applyFilter(arg1);
 }

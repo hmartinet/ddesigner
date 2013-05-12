@@ -10,7 +10,7 @@ class DiagramView;
 class DiagramMode
 {
 public:
-  DiagramMode(DiagramView* view);
+  DiagramMode(DiagramView* diagramView);
   virtual ~DiagramMode();
 
   virtual void paintSelection(QGraphicsItem* item, QPainter* painter);
@@ -20,7 +20,7 @@ public:
   virtual bool leaveEvent(QEvent* e);
 
 protected:
-  DiagramView* view;
+  DiagramView* _diagramView;
 };
 
 #endif // DIAGRAMMODE_H
