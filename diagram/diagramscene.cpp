@@ -36,6 +36,11 @@ void DiagramScene::removeNodeItem(NodeItem *nodeItem)
     _nodeItemList.removeOne(nodeItem);
 }
 
+void DiagramScene::addLinkItem(LinkItem *linkItem)
+{
+    addItem(linkItem->graphicsItem());
+}
+
 bool DiagramScene::displayGrid()
 {
     return _displayGrid;
@@ -52,6 +57,14 @@ void DiagramScene::setShowAnchors(bool showAnchors)
     for (NodeItem* item : _nodeItemList)
     {
         item->setShowAnchors(showAnchors);
+    }
+}
+
+void DiagramScene::unselectAll()
+{
+    for (QGraphicsItem* item : selectedItems())
+    {
+        item->setSelected(false);
     }
 }
 

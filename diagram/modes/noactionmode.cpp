@@ -1,7 +1,7 @@
 #include "noactionmode.h"
 
-NoActionMode::NoActionMode(DiagramView* view) :
-  DiagramMode(view)
+NoActionMode::NoActionMode() :
+  DiagramMode()
 {
 }
 

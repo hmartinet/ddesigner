@@ -11,7 +11,7 @@ class LinkAnchor : public QGraphicsPolygonItem
 public:
     LinkAnchor(QGraphicsItem* parent);
 
-    QPointF center();
+    QPointF sceneCenter();
     void setCenter(QPointF center);
     QPointF relativeCenter();
     void setHighlighted(bool highlighted);

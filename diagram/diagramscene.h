@@ -5,6 +5,7 @@
 #include <QPointF>
 #include <QList>
 #include "diagram/items/nodeitem.h"
+#include "diagram/items/linkitem.h"
 
 class DiagramScene : public QGraphicsScene
 {
@@ -14,9 +15,12 @@ public:
     void addNodeItem(NodeItem* nodeItem);
     void removeNodeItem(NodeItem* nodeItem);
 
+    void addLinkItem(LinkItem* linkItem);
+
     bool displayGrid();
     void setDisplayGrid(bool displayGrid);
     void setShowAnchors(bool showAnchors);
+    void unselectAll();
 
     QPointF nearestValid(QPointF point);
 

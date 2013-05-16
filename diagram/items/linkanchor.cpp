@@ -20,9 +20,9 @@ void LinkAnchor::setHighlighted(bool highlighted)
     update();
 }
 
-QPointF LinkAnchor::center()
+QPointF LinkAnchor::sceneCenter()
 {
-    return pos() + relativeCenter();
+    return scenePos() + relativeCenter();
 }
 
 void LinkAnchor::setCenter(QPointF center)

@@ -7,7 +7,8 @@
 AddNodeSvgItemMode::AddNodeSvgItemMode(DiagramView* diagramView,
                                        QSvgRenderer* renderer,
                                        const QString label) :
-    DiagramMode(diagramView),
+    DiagramMode(),
+    DiagramController(diagramView),
     renderer(renderer),
     label(label)
 {
@@ -25,7 +26,7 @@ bool AddNodeSvgItemMode::mousePressEvent(QMouseEvent *e)
 {
     if(e->button() == Qt::LeftButton)
     {
-        addNode(_diagramView->mapToScene(e->pos()));
+        addNode(diagramView()->mapToScene(e->pos()));
         return true;
     }
 
@@ -34,24 +35,24 @@ bool AddNodeSvgItemMode::mousePressEvent(QMouseEvent *e)
 
 bool AddNodeSvgItemMode::mouseMoveEvent(QMouseEvent *e)
 {
-    placementItem->setCenter(_diagramView->mapToScene(e->pos()));
+    placementItem->setCenter(diagramView()->mapToScene(e->pos()));
     return true;
 }
 
 bool AddNodeSvgItemMode::enterEvent(QEvent *e)
 {
-    _diagramView->scene()->addItem(placementItem);
+    diagramView()->scene()->addItem(placementItem);
     return true;
 }
 
 bool AddNodeSvgItemMode::leaveEvent(QEvent *e)
 {
-    _diagramView->scene()->removeItem(placementItem);
+    diagramView()->scene()->removeItem(placementItem);
     return true;
 }
 
 void AddNodeSvgItemMode::addNode(QPointF position)
 {
-    _diagramView->addItem(
+    diagramView()->addItem(
                 new NodeSvgItem(position, label, BOTTOM, false, renderer));
 }

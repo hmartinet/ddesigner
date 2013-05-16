@@ -1,8 +1,14 @@
 #include "moveitemmode.h"
 
-MoveItemMode::MoveItemMode(DiagramView *view) :
-    DiagramMode(view)
+MoveItemMode::MoveItemMode(DiagramView* diagramView) :
+    DiagramMode(),
+    DiagramController(diagramView)
 {
+}
+
+MoveItemMode::~MoveItemMode()
+{
+    diagramView()->diagramScene()->unselectAll();
 }
 
 bool MoveItemMode::mouseMoveEvent(QMouseEvent *e)

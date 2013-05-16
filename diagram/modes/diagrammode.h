@@ -5,12 +5,10 @@
 #include <QGraphicsItem>
 #include <QPainter>
 
-class DiagramView;
-
 class DiagramMode
 {
 public:
-  DiagramMode(DiagramView* diagramView);
+  DiagramMode();
   virtual ~DiagramMode();
 
   virtual void paintSelection(QGraphicsItem* item, QPainter* painter);
@@ -19,8 +17,6 @@ public:
   virtual bool enterEvent(QEvent* e);
   virtual bool leaveEvent(QEvent* e);
 
-protected:
-  DiagramView* _diagramView;
 };
 
 #endif // DIAGRAMMODE_H

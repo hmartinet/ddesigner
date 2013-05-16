@@ -3,12 +3,11 @@
 
 #include <QMouseEvent>
 #include "diagrammode.h"
-#include "../diagramview.h"
 
 class NoActionMode : public DiagramMode
 {
 public:
-  NoActionMode(DiagramView *view);
+  NoActionMode();
 
   void paintSelection(QPainter* painter);
   bool mousePressEvent(QMouseEvent* e);

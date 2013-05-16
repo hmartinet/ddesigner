@@ -4,10 +4,11 @@
 #include <QDebug>
 #include <QGraphicsItem>
 #include "diagram/diagramview.h"
+#include "diagram/diagramcontroller.h"
 #include "diagrammode.h"
-#include "diagram/items/linkitem.h"
+#include "diagram/items/linkpathitem.h"
 
-class LinkMode : public DiagramMode
+class LinkMode : public DiagramMode, protected DiagramController
 {
 public:
     LinkMode(DiagramView* diagramView);
@@ -19,12 +20,15 @@ public:
     bool leaveEvent(QEvent* e);
 
 protected:
-    void addLink();
+    LinkAnchor* highlightedAnchor();
+    void setHighlightedAnchor(LinkAnchor* highlightedAnchor);
+
+    LinkItem* linkItem();
+    void setLinkItem(LinkItem* linkItem);
 
 private:
-    QGraphicsItem* startItem;
-    QGraphicsItem* endItem;
-    LinkAnchor* _highlitedAnchor;
+    LinkAnchor* _highlightedAnchor;
+    LinkItem* _linkItem;
 };
 
 #endif // LINKMODE_H

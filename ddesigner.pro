@@ -22,18 +22,20 @@ HEADERS  += mainwindow.h \
     diagram/diagramscene.h \
     diagram/diagramview.h \
     diagram/fourdirection.h \
+    diagram/diagramcontroller.h \
     \
     diagram/items/nodelabelitem.h \
     diagram/items/linkitem.h \
     diagram/items/nodesvgitem.h \
+    diagram/items/nodeitem.h \
+    diagram/items/linkanchor.h \
+    diagram/items/linkpathitem.h \
     \
     diagram/modes/noactionmode.h \
     diagram/modes/diagrammode.h \
     diagram/modes/moveitemmode.h \
     diagram/modes/linkmode.h \
     diagram/modes/addnodesvgitemmode.h \
-    diagram/items/nodeitem.h \
-    diagram/items/linkanchor.h \
     diagram/itemdata.h
 
 SOURCES += mainwindow.cpp \
@@ -58,7 +60,9 @@ SOURCES += mainwindow.cpp \
     diagram/modes/linkmode.cpp \
     diagram/modes/addnodesvgitemmode.cpp \
     diagram/items/nodeitem.cpp \
-    diagram/items/linkanchor.cpp
+    diagram/items/linkanchor.cpp \
+    diagram/diagramcontroller.cpp \
+    diagram/items/linkpathitem.cpp
 
 FORMS    += mainwindow.ui
 

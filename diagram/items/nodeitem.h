@@ -2,9 +2,9 @@
 #define NODEITEM_H
 
 #include <QGraphicsItem>
-#include "../fourdirection.h"
+#include "diagram/fourdirection.h"
 #include "nodelabelitem.h"
-#include "diagram/items/linkanchor.h"
+#include "linkanchor.h"
 
 class NodeItem
 {

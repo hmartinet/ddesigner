@@ -5,9 +5,10 @@
 #include <QSvgRenderer>
 #include "diagrammode.h"
 #include "../diagramview.h"
+#include "diagram/diagramcontroller.h"
 #include "../items/nodesvgitem.h"
 
-class AddNodeSvgItemMode : public DiagramMode
+class AddNodeSvgItemMode : public DiagramMode, protected DiagramController
 {
 public:
     AddNodeSvgItemMode(DiagramView* diagramView,

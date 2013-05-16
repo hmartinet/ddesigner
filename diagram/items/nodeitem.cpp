@@ -99,16 +99,17 @@ QPointF NodeItem::anchorPosition(FourDirection direction)
     switch (direction) {
     case TOP:
         return QPointF(itemSize().center().x(),
-                       itemSize().top() - OFFSET);
+                       itemSize().top() - OFFSET/2);
     case LEFT:
-        return QPointF(itemSize().left() - OFFSET,
+        return QPointF(itemSize().left() - OFFSET/2,
                        itemSize().center().y());
     case RIGHT:
-        return QPointF(itemSize().right() + OFFSET,
+        return QPointF(itemSize().right() + OFFSET/2,
                        itemSize().center().y());
     default:
         return QPointF(itemSize().center().x(),
-                       (labelDirection() == BOTTOM ? size().bottom() : itemSize().bottom()) + OFFSET);
+                       (labelDirection() == BOTTOM ?
+                            size().bottom() : itemSize().bottom()) + OFFSET/2);
     }
 }
 

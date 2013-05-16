@@ -51,6 +51,8 @@ public:
     void removeItem(NodeItem* item);
     QGraphicsItem* itemAt(const QPointF &pos);
 
+    void addItem(LinkItem* item);
+
     DiagramScene* diagramScene();
 
 protected:

@@ -5,11 +5,14 @@
 #include <QGraphicsItem>
 #include "diagrammode.h"
 #include "../diagramview.h"
+#include "diagram/diagramcontroller.h"
 
-class MoveItemMode: public DiagramMode
+class MoveItemMode: public DiagramMode, protected DiagramController
 {
 public:
-  MoveItemMode(DiagramView* view);
+  MoveItemMode(DiagramView* diagramView);
+
+  ~MoveItemMode();
 
   bool mouseMoveEvent(QMouseEvent* e);
   bool mousePressEvent(QMouseEvent* e);

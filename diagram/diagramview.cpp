@@ -29,7 +29,7 @@
 
 DiagramView::DiagramView(QWidget *parent) :
     QGraphicsView(parent),
-    _mode(new NoActionMode(this))
+    _mode(new NoActionMode())
 {
     setScene(_diagramScene = new DiagramScene(this));
     diagramScene()->setSceneRect(0,0,1,1);
@@ -118,6 +118,11 @@ void DiagramView::removeItem(NodeItem *item)
 QGraphicsItem *DiagramView::itemAt(const QPointF &pos)
 {
     return scene()->itemAt(pos);
+}
+
+void DiagramView::addItem(LinkItem *item)
+{
+    diagramScene()->addLinkItem(item);
 }
 
 DiagramScene *DiagramView::diagramScene()

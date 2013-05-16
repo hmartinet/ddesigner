@@ -1,35 +1,32 @@
 #include "linkmode.h"
 
 LinkMode::LinkMode(DiagramView* diagramView) :
-    DiagramMode(diagramView)
+    DiagramMode(),
+    DiagramController(diagramView)
 {
-    startItem = (QGraphicsItem*) 0;
-    endItem = (QGraphicsItem*) 0;
-    _diagramView->diagramScene()->setShowAnchors(true);
-    _highlitedAnchor = NULL;
+    diagramView->diagramScene()->setShowAnchors(true);
+    setHighlightedAnchor(NULL);
+    _linkItem = NULL;
 }
 
 LinkMode::~LinkMode()
 {
-    _diagramView->diagramScene()->setShowAnchors(false);
+    diagramView()->diagramScene()->setShowAnchors(false);
 }
 
 bool LinkMode::mousePressEvent(QMouseEvent *e)
 {
-    if(e->button() == Qt::LeftButton)
+    if(e->button() == Qt::LeftButton && highlightedAnchor())
     {
-        QGraphicsItem* item = _diagramView->itemAt(_diagramView->mapToScene(e->pos()));
-        if (item != (QGraphicsItem*) 0)
+        if (linkItem())
         {
-            if (startItem == (QGraphicsItem*) 0)
-            {
-                startItem = item;
-            }
-            else
-            {
-                endItem = item;
-                addLink();
-            }
+            linkItem()->setEndAnchor(highlightedAnchor());
+            setLinkItem(NULL);
+        }
+        else
+        {
+            setLinkItem(new LinkPathItem(highlightedAnchor(), diagramView()->mapToScene(e->pos())));
+            diagramView()->addItem(linkItem());
         }
     }
 
@@ -38,25 +35,31 @@ bool LinkMode::mousePressEvent(QMouseEvent *e)
 
 bool LinkMode::mouseMoveEvent(QMouseEvent *e)
 {
-    const QRect rect = QRect(e->pos().x() - 20, e->pos().y() - 20, 40, 40);
-    QRectF sceneRect = QRectF(_diagramView->mapToScene(rect.topLeft()), _diagramView->mapToScene(rect.bottomRight()));
-    if (_highlitedAnchor)
+    if (linkItem())
     {
-        if (!sceneRect.contains(_highlitedAnchor->scenePos()))
+        linkItem()->setEndPoint(diagramView()->mapToScene(e->pos()));
+    }
+
+    const QRect rect = QRect(e->pos().x() - 20, e->pos().y() - 20, 40, 40);
+    QRectF sceneRect = QRectF(diagramView()->mapToScene(rect.topLeft()), diagramView()->mapToScene(rect.bottomRight()));
+    if (highlightedAnchor())
+    {
+        if (!sceneRect.contains(highlightedAnchor()->scenePos()))
         {
-            _highlitedAnchor->setHighlighted(false);
-            _highlitedAnchor = NULL;
+            highlightedAnchor()->setHighlighted(false);
+            setHighlightedAnchor(NULL);
         }
     }
 
-    QList<QGraphicsItem*> items = _diagramView->items(rect);
+    QList<QGraphicsItem*> items = diagramView()->items(rect);
     if (!items.isEmpty())
     {
         qreal d = 0.;
         QGraphicsItem* nearestItem = NULL;
         for (QGraphicsItem* item : items)
         {
-            if (item->data(ItemData::TYPE).toInt() == ItemType::ANCHOR)
+            if (item->data(ItemData::TYPE).toInt() == ItemType::ANCHOR &&
+                    (!linkItem() || linkItem()->startAnchor()->parentItem() != item->parentItem()))
                 {
                 qreal dt = (sceneRect.center() - item->sceneBoundingRect().center()).manhattanLength();
                 if (!nearestItem || dt < d)
@@ -66,14 +69,14 @@ bool LinkMode::mouseMoveEvent(QMouseEvent *e)
                 }
             }
         }
-        if (nearestItem && (!_highlitedAnchor || _highlitedAnchor != nearestItem))
+        if (nearestItem && (!highlightedAnchor() || highlightedAnchor() != nearestItem))
         {
-            if (_highlitedAnchor)
+            if (highlightedAnchor())
             {
-                _highlitedAnchor->setHighlighted(false);
+                highlightedAnchor()->setHighlighted(false);
             }
-            _highlitedAnchor = static_cast<LinkAnchor*>(nearestItem);
-            _highlitedAnchor->setHighlighted(true);
+            setHighlightedAnchor(static_cast<LinkAnchor*>(nearestItem));
+            highlightedAnchor()->setHighlighted(true);
         }
     }
     return true;
@@ -89,8 +92,23 @@ bool LinkMode::leaveEvent(QEvent *e)
     return true;
 }
 
-void LinkMode::addLink()
+LinkAnchor *LinkMode::highlightedAnchor()
 {
-//    diagramView->addItem(
-//                new LinkItem(diagramView ,startItem, endItem));
+    return _highlightedAnchor;
 }
+
+void LinkMode::setHighlightedAnchor(LinkAnchor *highlightedAnchor)
+{
+    _highlightedAnchor = highlightedAnchor;
+}
+
+LinkItem *LinkMode::linkItem()
+{
+    return _linkItem;
+}
+
+void LinkMode::setLinkItem(LinkItem *linkItem)
+{
+    _linkItem = linkItem;
+}
+

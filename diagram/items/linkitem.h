@@ -1,30 +1,34 @@
 #ifndef LINKITEM_H
 #define LINKITEM_H
 
-#include <QGraphicsPathItem>
 #include <QGraphicsItem>
-#include <QPainter>
-#include <QStyleOptionGraphicsItem>
-#include <QWidget>
-#include "diagram/diagramview.h"
+#include "linkanchor.h"
 
-class LinkItem : public QGraphicsPathItem
+class LinkItem
 {
 public:
-    LinkItem(DiagramView* diagramView,
-             QGraphicsItem* startItem,
-             QGraphicsItem* endItem);
+    LinkItem(LinkAnchor *startAnchor,
+             QPointF endPoint,
+             QGraphicsItem* graphicsItem);
     ~LinkItem();
 
-protected:
-    void doPath();
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = 0);
+    LinkAnchor* startAnchor();
+    void setStartAnchor(LinkAnchor* startAnchor);
+    LinkAnchor* endAnchor();
+    void setEndAnchor(LinkAnchor* endAnchor);
+
+    QPointF startPoint();
+
+    QPointF endPoint();
+    void setEndPoint(QPointF endPoint);
+
+    QGraphicsItem* graphicsItem();
 
 private:
-    DiagramView* diagramView;
-    QGraphicsItem* startItem;
-    QGraphicsItem* endItem;
+    QGraphicsItem* _graphicsItem;
+    LinkAnchor* _startAnchor;
+    LinkAnchor* _endAnchor;
+    QPointF _endPoint;
 };
 
 #endif // LINKITEM_H
